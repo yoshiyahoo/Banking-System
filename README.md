@@ -6,7 +6,7 @@ We will develop a web application program that combines SQL statements and a hos
 
 ## Tech Stacks
 - Frontends : 
-- Backends : 
+- Backends : Node.js
 - Database : MYSQL
 - Others : 
 
