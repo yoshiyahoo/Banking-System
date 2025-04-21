@@ -1,0 +1,25 @@
+{
+  "name": "banking-system",
+  "version": "1.0.0",
+  "description": "This is a project for our Database Architecture class involving a banking system with a MySQL database connected.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoshiyahoo/Banking-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yoshiyahoo/Banking-System/issues"
+  },
+  "homepage": "https://github.com/yoshiyahoo/Banking-System#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql": "^2.18.1"
+  }
+}
