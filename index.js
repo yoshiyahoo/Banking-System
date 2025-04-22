@@ -97,6 +97,16 @@ app.get('/todos/:id', async (req, res) => {
   const dao = new AppDAO();
   const todoRepository = new Repository(dao);
   todoRepository.createTable();
-*/
+  
+  app.listen(3000, () => {
+    console.log('server has started on port 3000');
+  });
+    // response.send(await readfile('./home.html', 'utf8'))
+    // response.send(awaitreadfile('./home.html', 'utf8', (err,html) => {
+    //     if(err){
+    //         response.status(500).send('sorry, out of order')
+    //     }
+    //     response.send(html)
+    // })
 
 app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
