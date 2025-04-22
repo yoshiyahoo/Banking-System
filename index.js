@@ -4,7 +4,7 @@ const cors = requires('cors');
 
 const AppDAO = require('./DAO');
 const Repository = require('./Repository');
-const Todo = require('./models');
+const Todo = require('./model');
 
 app.use(express.static('public'));
 
@@ -70,7 +70,7 @@ app.get('/todos/:id', async (req, res) => {
     try {
       const { id } = req.params;
       const deleteTodo = await todoRepository.deleteTodo(id);
-      // console.log("delete todo", deleteTodo);
+      //console.log("delete todo", deleteTodo);
       res.json(deleteTodo);
     } catch (err) {
       console.log(err.message);
@@ -89,6 +89,7 @@ app.get('/todos/:id', async (req, res) => {
   app.listen(3000, () => {
     console.log('server has started on port 3000');
   });
+
     // response.send(await readfile('./home.html', 'utf8'))
     // response.send(awaitreadfile('./home.html', 'utf8', (err,html) => {
     //     if(err){

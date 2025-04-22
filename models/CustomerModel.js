@@ -9,7 +9,7 @@ async function getCustomers(){
 
 
 //get one customer by ID
-async function getCustomer(){
+async function getCustomer(SSN){
     const [rows] = await db.query('SELECT * FROM customer WHERE SSN == ?',[SSN]);
     return rows[0];
 }

@@ -10,7 +10,7 @@ async function getAccounts(){
 
 
 //get one account by ID
-async function getAccount(){
+async function getAccount(AccNum){
     const [rows] = await db.query('SELECT * FROM account WHERE AccNum == ?',[AccNum]);
     return rows[0];
 }
