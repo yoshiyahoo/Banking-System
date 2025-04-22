@@ -3,22 +3,22 @@
 const db = require('./db');
 
 //get all accounts in table
-function getAccounts() {
-    const rows = db.query('SELECT * FROM account');
+async function getAccounts() {
+    const rows = await db.run('SELECT * FROM account');
     return rows;
 }
 
 
 //get one account by ID
-function getAccount(AccNum){
-    const rows = db.query('SELECT * FROM account WHERE AccNum == ?',[AccNum]);
+async function getAccount(AccNum){
+    const rows = await db.run('SELECT * FROM account WHERE AccNum == ?',AccNum);
     return rows[0];
 }
 
 //create a new account row
-function createAccount(){
+async function createAccount(){
     const {AccNum, Balance, AccType, Name,Status, CustomerSSN, BankID } = accountData;
-    const [result] = db.query(
+    const [result] = await db.run(
         //table name might be wrong
         'INSERT INTO account(AccNum,Balance,AccType,Name,Status,CustomerSSN,BankID) VALUES(?,?,?,?,?,?,?)',
         [AccNum, Balance, AccType, Name,Status, CustomerSSN, BankID]
