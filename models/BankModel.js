@@ -10,7 +10,7 @@ async function getBanks(){
 
 
 //get one Bank by ID
-async function getBank(){
+async function getBank(Bank_ID){
     const [rows] = await db.query('SELECT * FROM bank WHERE Bank_ID == ?',[Bank_ID]);
     return rows[0];
 }

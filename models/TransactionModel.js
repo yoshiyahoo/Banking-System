@@ -10,7 +10,7 @@ async function getTransactions(){
 
 
 //get one transaction by ID
-async function getTransaction(){
+async function getTransaction(TransID){
     const [rows] = await db.query('SELECT * FROM transaction WHERE TransID == ?',[TransID]);
     return rows[0];
 }

@@ -10,7 +10,7 @@ async function getLoans(){
 
 
 //get one loan by ID
-async function getLoan(){
+async function getLoan(Loan_ID){
     const [rows] = await db.query('SELECT * FROM loan WHERE Loan_ID == ?',[Loan_ID]);
     return rows[0];
 }

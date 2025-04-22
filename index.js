@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = requires('cors');
+const cors = require('cors');
 
 const AppDAO = require('./DAO');
 const Repository = require('./Repository');
@@ -8,7 +8,10 @@ const Todo = require('./model');
 
 app.use(express.static('public'));
 
-console.log("Hello World")
+app.use(cors());
+app.use(express.json());
+
+console.log("Hello World");
 
 
 app.get('/', async (request, response) => {
