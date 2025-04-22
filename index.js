@@ -1,54 +1,102 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql2");
+const cors = require('cors');
+const accountModels = require('./models/AccountModel') 
 
-// Database stuff here
-// this is metadata for the connection to the database
-const dbConnection = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "082102",
-    port: "3306",
-    database: "blank", // you can connect to a simple database if you want
-});
-/*
-dbConnection.execute(`create table data (
-number integer
-);`);
+// const AppDAO = require('./DAO');
+// const Repository = require('./Repository');
+// const Todo = require('./models');
 
-dbConnection.execute(`insert into data values
-(5),
-(15),
-(12),
-(4);`);
-*/
-dbConnection.connect((err) => {
-    if (err) {
-        console.error("The database failed to connect"); 
-    }
-    console.log("Here is a successful connection");
-});
+//app.use(express.static('public'));
 
-// Serve the static files from the public directory.
-// Pretty much just use the CSS and other public images
-app.use(express.static(__dirname + "/public"));
+// Setup cors authentication to allow other frameworks to talk to this server
+app.use(express.json())
+app.use(cors()) // make sure it's a function call omg
 
-app.get("/", (_req, res) => {
-    content = __dirname + "/public/index.html"; // __dirname is how you get the current working directory.
-    res.sendFile(content);
-});
-
-app.get("/data", (_req, res) => {
-    dbConnection.execute("select * from thing", (error, results) => {
-        if (error) {
-            console.log("The database thing didn't work");
-        }
-
-        res.send(results);
-    });
+app.get("/api/read", (_req, res) => {
+    const data = accountModels.getAccount()
+    res.json(data)
 })
 
-app.listen(3000, () => {
-    console.log("Server has started");
-});
+app.get("/", (_req, res) => {
+    path = __dirname + "/public/index.html"
+    res.send("hello world")
+})
 
+
+/*
+app.get('/something_else', (request, response) => {
+    try{
+        console.log('trying to fetch');
+        //const allTodos = await todoRepository.getAllTodos();
+        console.log('get all todos ', allTodos);
+        res.json(allTodos);
+    } 
+    catch (err) {
+        console.log(err.message);
+    }
+});
+*/
+
+//get a todo by id
+/*
+app.get('/todos/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const todo = await todoRepository.getTodoById(id);
+      // console.log("get todo by id ", todo);
+      res.json(todo);
+    } catch (err) {
+      console.log(err.message);
+    }
+  });
+  
+  //insert a todo
+  app.post('/todos', async (req, res) => {
+    try {
+      const { description } = req.body;
+      const newTodo = await todoRepository.insertTodo(description);
+      // console.log("insert todo ", newTodo);
+      res.json(newTodo);
+    } catch (err) {
+      console.log(err.message);
+    }
+  });
+  
+  //update a todo by id
+  app.put('/todos/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { description } = req.body;
+      newTodo = new Todo(id, description);
+      const updateTodo = await todoRepository.updateTodo(newTodo);
+      // console.log("update todo ", updateTodo);
+      res.json(updateTodo);
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+  
+  //delete a todo by id
+  app.delete('/todos/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleteTodo = await todoRepository.deleteTodo(id);
+      // console.log("delete todo", deleteTodo);
+      res.json(deleteTodo);
+    } catch (err) {
+      console.log(err.message);
+    }
+  });
+  
+  app.get('*', function (req, res) {
+    path = __dirname + '/public/index.html';
+    res.sendFile(path);
+  });
+  
+  const dao = new AppDAO();
+  const todoRepository = new Repository(dao);
+  todoRepository.createTable();
+*/
+
+app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
