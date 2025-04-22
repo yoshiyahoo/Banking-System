@@ -8,6 +8,7 @@ const Todo = require('./model');
 
 app.use(express.static('public'));
 
+//Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -17,7 +18,7 @@ console.log("Hello World");
 app.get('/', async (request, response) => {
     try{
         console.log('trying to fetch');
-        //const allTodos = await todoRepository.getAllTodos();
+        const allTodos = await todoRepository.getAllTodos();
         console.log('get all todos ', allTodos);
         res.json(allTodos);
     } 
@@ -35,7 +36,7 @@ app.get('/todos/:id', async (req, res) => {
     try {
       const { id } = req.params;
       const todo = await todoRepository.getTodoById(id);
-      // console.log("get todo by id ", todo);
+      console.log("get todo by id ", todo);
       res.json(todo);
     } catch (err) {
       console.log(err.message);
@@ -47,7 +48,7 @@ app.get('/todos/:id', async (req, res) => {
     try {
       const { description } = req.body;
       const newTodo = await todoRepository.insertTodo(description);
-      // console.log("insert todo ", newTodo);
+      console.log("insert todo ", newTodo);
       res.json(newTodo);
     } catch (err) {
       console.log(err.message);
@@ -61,7 +62,7 @@ app.get('/todos/:id', async (req, res) => {
       const { description } = req.body;
       newTodo = new Todo(id, description);
       const updateTodo = await todoRepository.updateTodo(newTodo);
-      // console.log("update todo ", updateTodo);
+      console.log("update todo ", updateTodo);
       res.json(updateTodo);
     } catch (err) {
       console.error(err.message);
@@ -73,17 +74,17 @@ app.get('/todos/:id', async (req, res) => {
     try {
       const { id } = req.params;
       const deleteTodo = await todoRepository.deleteTodo(id);
-      //console.log("delete todo", deleteTodo);
+      console.log("delete todo", deleteTodo);
       res.json(deleteTodo);
     } catch (err) {
       console.log(err.message);
     }
   });
   
-  app.get('*', function (req, res) {
-    path = __dirname + '/public/index.html';
-    res.sendFile(path);
-  });
+  // app.get('*', function (req, res) {
+  //   path = __dirname + '/public/index.html';
+  //   res.sendFile(path);
+  // });
   
   const dao = new AppDAO();
   const todoRepository = new Repository(dao);
@@ -93,12 +94,5 @@ app.get('/todos/:id', async (req, res) => {
     console.log('server has started on port 3000');
   });
 
-    // response.send(await readfile('./home.html', 'utf8'))
-    // response.send(awaitreadfile('./home.html', 'utf8', (err,html) => {
-    //     if(err){
-    //         response.status(500).send('sorry, out of order')
-    //     }
-    //     response.send(html)
-    // })
 
-app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
+//app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))

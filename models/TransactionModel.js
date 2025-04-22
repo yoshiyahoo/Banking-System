@@ -19,7 +19,6 @@ async function getTransaction(TransID){
 async function createTransaction(){
     const {TransID,Name,Vendor,TransType,Amt,Date,AccNum } = transactionData;
     const [result] = await db.query(
-        //table name might be wrong
         'INSERT INTO transaction(TransID,Name,Vendor,TransType,Amt,Date,AccNum) VALUES(?,?,?,?,?,?,?)',
         [TransID,Name,Vendor,TransType,Amt,Date,AccNum]
     );

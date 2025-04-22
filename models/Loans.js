@@ -19,7 +19,6 @@ async function getLoan(Loan_ID){
 async function createLoan(){
     const {Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy } = loanData;
     const [result] = await db.query(
-        //table name might be wrong
         'INSERT INTO customer(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
         [Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy]
     );

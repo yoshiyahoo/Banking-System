@@ -18,7 +18,6 @@ async function getCustomer(SSN){
 async function createCustomer(){
     const {SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of } = customerData;
     const [result] = await db.query(
-        //table name might be wrong
         'INSERT INTO customer(SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of]
     );

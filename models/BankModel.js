@@ -4,7 +4,7 @@ const db = require('./db');
 
 //get all Banks in table
 async function getBanks(){
-    const[rows] = await db.query('SELECT * FROM bank');
+    const rows = await db.query('SELECT * FROM bank');
     return rows;
 }
 
@@ -20,7 +20,6 @@ async function getBank(Bank_ID){
 async function createBank(){
     const {Bank_ID, Name, Addr,Money } = BankData;
     const [result] = await db.query(
-        //table name might be wrong
         'INSERT INTO customer(Bank_ID, Name, Addr,Money ) VALUES(?,?,?,?)',
         [Bank_ID, Name, Addr,Money ]
     );
