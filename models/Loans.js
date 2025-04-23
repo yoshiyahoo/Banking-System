@@ -1,5 +1,6 @@
 //Change this object to correct DB file
-const db = require('./db');
+const { Database } = require('./db');
+const db = new Database();
 
 //get all loans in table
 async function getLoans(){
@@ -7,24 +8,53 @@ async function getLoans(){
     return rows;
 }
 
-
 //get one loan by ID
-async function getLoan(Loan_ID){
-    const rows = await db.run('SELECT * FROM loan WHERE Loan_ID == ?',[Loan_ID]);
-    return rows[0];
+async function getLoan(body) {
+    const values = Object.values(body)
+    let whereClause = ``
+    for (let i = 0; i < values[0].length; i += 1) {
+        let set = ``;
+        if (Array.isArray(values[1][i])) {
+            set += `"${values[1][i].join("\",\"")}"`
+            whereClause += `${values[0][i]} in (${set})`
+        }
+        else {
+            whereClause += `${values[0][i]} = "${values[1][i]}"`
+        }
+        if (i + 1 != values[0].length) {
+            whereClause += ` and `
+        }
+    }
+    const sql = `SELECT * FROM loan WHERE ${whereClause}`
+    const rows = await db.run(sql);
+    return rows;
 }
 
 //create a new loan row
-async function createLoan(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy){
-    const {Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy } = loanData;
+//JSON
+//{
+//  "IssueDate": date
+//  "Principle": integer
+//  "LoanAmount": integer
+//  "Status": varchar
+//  "OfferedBy": integer
+//  "TakenOutBy": integer
+//}
+async function createLoan(loanData){
+    const [IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy] = Object.values(loanData);
     await db.run(
-        //table name might be wrong
-        'INSERT INTO customer(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
-        [Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy]
+        'INSERT INTO customer(IssueDate,Principle,LoanAmoount,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
+        [IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy]
     );
 }
 
 //update existing loan profile
+//JSON
+//{
+//  "Columns": [_], (column list goes there)
+//  "Values": [_],  (values go here, some can be lists of values), both items must be the same length
+//  "LoanID": integer
+//}
 async function updateLoans(fieldsToUpdate){
     
     const values = Object.values(fieldsToUpdate)

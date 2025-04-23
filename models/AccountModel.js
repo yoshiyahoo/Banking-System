@@ -1,8 +1,7 @@
 //Change all object to Account objects
 //Change this object to correct DB file
-const { DataBase } = require("./db");
-
-const db = new DataBase();
+const { Database } = require("./db"); 
+const db = new Database()
 
 //get all accounts in table
 async function getAccounts() {

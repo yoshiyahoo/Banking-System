@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
-const { getBank, getBanks, createBank } = require('./models/Bankmodel')
+const { getBank, getBanks, createBank, updateBank } = require('./models/BankModel')
+const { getCustomer, getCustomers, createCustomer, updateCustomer } = require('./models/CustomerModel')
+const { getLoan, getLoans, createLoan, updateLoan } = require('./models/Loans')
+const { getTransaction, getTransactions, createTransaction, updateTransaction } = require('./models/TransactionModel')
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
@@ -66,21 +69,116 @@ app.get("/api/getBank", (req, res) => {
 app.post("/api/updateBank", (req, res) => {
     updateBank(req.body)
         .then((_data) => {
-            res.json("Account Updated!")
+            res.json("Bank Updated!")
         })
 })
 
 app.post("/api/createBank", (req, res) => {
     createBank(req.body)
         .then(() => {
-            res.json("Account Created!")
+            res.json("Bank Created!")
         })
         .catch((err) => {
-            res.json({"Account Failed to Create!": err})
+            res.json({"Bank Failed to Create!": err})
         })
 })
 
 
+// Setup Customer Routes
+app.get("/api/getCustomers", (_req, res) => {
+    getCustomers()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getCustomer", (req, res) => {
+    getCustomer(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateCustomer", (req, res) => {
+    updateCustomer(req.body)
+        .then((_data) => {
+            res.json("Customer Updated!")
+        })
+})
+
+app.post("/api/createCustomer", (req, res) => {
+    createCustomer(req.body)
+        .then(() => {
+            res.json("Customer Created!")
+        })
+        .catch((err) => {
+            res.json({"Customer Failed to Create!": err})
+        })
+})
+
+// Setup loan routes
+app.get("/api/getLoans", (_req, res) => {
+    getLoans()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getLoan", (req, res) => {
+    getLoan(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateLoan", (req, res) => {
+    updateLoan(req.body)
+        .then((_data) => {
+            res.json("Loan Updated!")
+        })
+})
+
+app.post("/api/createLoan", (req, res) => {
+    createLoan(req.body)
+        .then(() => {
+            res.json("Loan Created!")
+        })
+        .catch((err) => {
+            res.json({"Loan Failed to Create!": err})
+        })
+})
+
+// Setup transaction routes
+app.get("/api/getLoans", (_req, res) => {
+    getTransactions()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getLoan", (req, res) => {
+    getTransaction(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateLoan", (req, res) => {
+    updateTransaction(req.body)
+        .then((_data) => {
+            res.json("Transaction Updated!")
+        })
+})
+
+app.post("/api/createLoan", (req, res) => {
+    createTransaction(req.body)
+        .then(() => {
+            res.json("Transaction Created!")
+        })
+        .catch((err) => {
+            res.json({"Transaction Failed to Create!": err})
+        })
+})
 
 // Setup main route for the website
 app.get("/", (_req, res) => {
