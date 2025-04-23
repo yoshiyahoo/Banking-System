@@ -37,7 +37,7 @@ async function createLoan(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,
     const {Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy } = loanData;
     await db.run(
         //table name might be wrong
-        'INSERT INTO customer(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO customer(LoanID,DateIssued,Principle,loanAmount,loanStatus,offeredBy,takenOutBy) VALUES(?,?,?,?,?,?,?)',
         [Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy]
     );
 }

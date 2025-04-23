@@ -53,12 +53,7 @@ async function getCustomer(body){
 async function createCustomer(customerData){
     const [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of] = Object.values(customerData);
     await db.run(
-<<<<<<< Updated upstream
         'INSERT INTO customer(SSN, FirstName, MiddleName, LastName, StreetAddress, Zip, State, DateOfBirth, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
-=======
-        
-        'INSERT INTO customer(SSN, FirstName, MiddleName, LastName,StreetAddress, Zip, State, DateOfBirth, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
->>>>>>> Stashed changes
         [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of]
     );
 
