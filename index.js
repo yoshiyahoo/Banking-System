@@ -13,6 +13,7 @@ const { getBank, getBanks, createBank } = require('./models/Bankmodel')
 // Setup cors authentication to allow other frameworks to talk to this server
 app.use(express.json())
 app.use(cors()) // make sure it's a function call omg
+app.use(express.static("public"))
 
 
 // Setup Account Routes
