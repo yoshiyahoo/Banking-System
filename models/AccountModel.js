@@ -40,6 +40,15 @@ async function getAccount(body){
 }
 
 //create a new account row
+//JSON data needs to be this format
+// {
+//   "Balance": _
+//   "AccountType": _
+//   "Name": _
+//   "Status": _
+//   "CustomerSSN": _
+//   "BankID": _
+// }
 async function createAccount(accountData){
     const [Balance, AccType, Name, Status, CustomerSSN, BankID] = Object.values(accountData);
     await db.run(
