@@ -10,8 +10,24 @@ async function getLoans(){
 
 //get one loan by ID
 async function getLoan(Loan_ID){
-    const rows = await db.run('SELECT * FROM loan WHERE Loan_ID == ?',[Loan_ID]);
-    return rows[0];
+    const values = Object.values(body)
+    let whereClause = ``
+    for (let i = 0; i < values[0].length; i += 1) {
+        let set = ``;
+        if (Array.isArray(values[1][i])) {
+            set += `"${values[1][i].join("\",\"")}"`
+            whereClause += `${values[0][i]} in (${set})`
+        }
+        else {
+            whereClause += `${values[0][i]} = "${values[1][i]}"`
+        }
+        if (i + 1 != values[0].length) {
+            whereClause += ` and `
+        }
+    }
+    const sql = `SELECT * FROM loan WHERE ${whereClause}`
+    const rows = await db.run(sql);
+    return rows;
 }
 
 //create a new loan row

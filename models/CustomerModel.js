@@ -1,5 +1,6 @@
 //Change this object to correct DB file
-const db = require('./db');
+const { DataBase } = require('./db');
+const db = new DataBase();
 
 //get all customers in table
 async function getCustomers(){
@@ -16,7 +17,6 @@ async function getCustomers(){
 async function getCustomer(body){
     const values = Object.values(body)
     let whereClause = ``
-    console.log(values[1]); 
     for (let i = 0; i < values[0].length; i += 1) {
         let set = ``;
         if (Array.isArray(values[1][i])) {
@@ -53,7 +53,7 @@ async function getCustomer(body){
 async function createCustomer(customerData){
     const [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of] = Object.values(customerData);
     await db.run(
-        'INSERT INTO customer(SSN, FirstName, MiddleName, LastName, StreetAddress, Zip, State, DOB, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
+        'INSERT INTO customer(SSN, FirstName, MiddleName, LastName, StreetAddress, Zip, State, DateOfBirth, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of]
     );
 
@@ -84,7 +84,7 @@ async function updateCustomer(fieldsToUpdate){
         }
     } 
     
-    const sql =` UPDATE customer SET ${setClause} WHERE customerSSN = ${values[2]}`
+    const sql =` UPDATE customer SET ${setClause} WHERE SSN = ${values[2]}`
     const result = await db.run(sql,values)
     return result.affectedRows
 }
