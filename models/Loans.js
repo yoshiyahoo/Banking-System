@@ -25,6 +25,33 @@ async function createLoan(Loan_ID,IssueDate,Principle,Loan_Amt,Status,OfferedBy,
     );
 }
 
+//update existing loan profile
+async function updateLoans(fieldsToUpdate){
+    
+    const values = Object.values(fieldsToUpdate)
+
+    if(Object.values(fieldsToUpdate)[0].length === 0) {
+        throw new Error('No new items to update.');
+    }
+    else if (values[0].length !== values[1].length) {
+        throw new Error("The number of items you're updating doesn't match the amount of values provided");
+    }
+    
+    let setClause = ``
+    for(let i = 0; i < values[0].length; i += 1) {
+        setClause += `${values[0][i]} = "${values[1][i]} "`
+        if (i + 1 !== values[0].length) {
+            setClause += `,` 
+        }
+    } 
+    
+    const sql =` UPDATE loans SET ${setClause} WHERE LoanID = ${values[2]}`
+    const result = await db.run(sql,values)
+    return result.affectedRows
+
+
+}
+
 //all functions must be exported for user use.
 module.exports = {
     getLoan,
