@@ -17,12 +17,11 @@ async function getCustomer(){
 //create a new customer row
 async function createCustomer(){
     const {SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of } = customerData;
-    const result = await db.run(
+    await db.run(
         //table name might be wrong
         'INSERT INTO customer(SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of]
     );
-    return result.insertid;
 
 }
 

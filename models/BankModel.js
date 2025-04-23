@@ -19,13 +19,11 @@ async function getBank(){
 //What is Bank.Money?
 async function createBank(){
     const {Bank_ID, Name, Addr,Money } = BankData;
-    const [result] = await db.run(
+    await db.run(
         //table name might be wrong
         'INSERT INTO customer(Bank_ID, Name, Addr,Money ) VALUES(?,?,?,?)',
         [Bank_ID, Name, Addr,Money ]
     );
-    return result.insertid;
-
 }
 
 //all functions must be exported for user use.
