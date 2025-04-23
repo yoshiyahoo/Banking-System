@@ -42,12 +42,12 @@ async function getAccount(body){
 //create a new account row
 //JSON data needs to be this format
 // {
-//   "Balance": _
-//   "AccountType": _
-//   "Name": _
-//   "Status": _
-//   "CustomerSSN": _
-//   "BankID": _
+//   "Balance": decimal
+//   "AccountType": varchar
+//   "Name": varchar
+//   "Status": varchar
+//   "CustomerSSN": integer (9 digits)
+//   "BankID": integer
 // }
 async function createAccount(accountData){
     const [Balance, AccType, Name, Status, CustomerSSN, BankID] = Object.values(accountData);
@@ -63,7 +63,7 @@ async function createAccount(accountData){
 //{
 //  "Columns": [_], (column list goes there)
 //  "Values": [_],  (values go here, some can be lists of values), both items must be the same length
-//  "AccountNumber": _
+//  "AccountNumber": integer
 //}
 async function updateAccount(fieldsToUpdate){
     
