@@ -1,8 +1,14 @@
 const mysql = require('mysql2');
 const Promise = require('bluebird');
 
-class DataBase {
+class Database {
+    static instance;
+
     constructor() {
+        if (Database.instance) {
+            return Database.instance
+        }
+        Database.instance = this;
         // Set up the database connection for a one time connection
         this.connection = mysql.createConnection({
             host: '127.0.0.1', // Your database host
@@ -47,6 +53,7 @@ class DataBase {
         });
     }
 }
-module.exports = {
-    DataBase
-}
+
+module.exports = { 
+    Database 
+}; 

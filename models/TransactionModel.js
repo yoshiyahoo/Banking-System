@@ -1,5 +1,6 @@
 //Change this object to correct DB file
-const db = require('./db');
+const { Database } = require('./db');
+const db = new Database()
 
 //get all transactions in table
 async function getTransactions(){
