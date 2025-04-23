@@ -6,21 +6,56 @@ async function getBanks() {
     return rows;
 }
 
-//get one Bank by ID
-async function getBank() {
-    const rows = await db.run('SELECT * FROM bank WHERE Bank_ID == ?',[Bank_ID]);
-    return rows[0];
+//get one Bank
+//the JSON needs this format
+//{
+//  "Columns": [_], (column list goes there)
+//  "Values": [_, [_], _]  (values go here, some can be lists of values)
+//}
+async function getBank(body) {
+    const values = Object.values(body)
+    let whereClause = ``
+    console.log(values[1]); 
+    for (let i = 0; i < values[0].length; i += 1) {
+        let set = ``;
+        if (Array.isArray(values[1][i])) {
+            set += `"${values[1][i].join("\",\"")}"`
+            whereClause += `${values[0][i]} in (${set})`
+        }
+        else {
+            whereClause += `${values[0][i]} = "${values[1][i]}"`
+        }
+        if (i + 1 != values[0].length) {
+            whereClause += ` and `
+        }
+    }
+    const sql = `SELECT * FROM bank WHERE ${whereClause}`
+    const rows = await db.run(sql);
+    return rows;
 }
 
 //create a new bank row
+//JSON format 
+//{
+//  "Name": varchar
+//  "Address": varchar
+//  "Money": integer 
+//}
 async function createBank(BankData) {
-    const {Bank_ID, Name, Addr, Money} = BankData;
+    const {Name, Addr, Money} = BankData;
     await db.run(
-        'INSERT INTO customer(Bank_ID, Name, Addr,Money ) VALUES(?,?,?,?)',
-        [Bank_ID, Name, Addr, Money]
+        'INSERT INTO customer(Name, Addr, Money) VALUES(?,?,?)',
+        [Name, Addr, Money]
     );
 }
 
+//update the bank row
+//JSON fromat
+//{
+//  "Columns": [_], (column list goes there)
+//  "Values": [_],  (values go here, some can be lists of values), both items must be the same length
+//  "BankID": integer
+//}
 async function updateBank(fieldsToUpdate){
     
     const values = Object.values(fieldsToUpdate)

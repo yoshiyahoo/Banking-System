@@ -32,7 +32,7 @@ app.get("/api/getAccount", (req, res) => {
 
 app.post("/api/updateAccount", (req, res) => {
     updateAccount(req.body)
-        .then((data) => {
+        .then((_data) => {
             res.json("Account Updated!")
         })
 })
@@ -63,7 +63,7 @@ app.get("/api/getBank", (req, res) => {
 })
 
 app.post("/api/updateBank", (req, res) => {
-    updateAccount(req.body)
+    updateBank(req.body)
         .then((_data) => {
             res.json("Account Updated!")
         })
@@ -79,6 +79,9 @@ app.post("/api/createBank", (req, res) => {
         })
 })
 
+
+
+// Setup main route for the website
 app.get("/", (_req, res) => {
     path = __dirname + "/public/index.html"
     res.sendFile(path)
