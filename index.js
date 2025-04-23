@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
-const { getBank, getBanks, createBank } = require('./models/BankModel')
+const { getBank, getBanks, createBank, updateBank } = require('./models/BankModel')
+const { getCustomer, getCustomers, createCustomer, updateCustomer } = require('./models/CustomerModel')
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
@@ -72,14 +73,45 @@ app.post("/api/updateBank", (req, res) => {
 app.post("/api/createBank", (req, res) => {
     createBank(req.body)
         .then(() => {
-            res.json("Account Created!")
+            res.json("Bank Created!")
         })
         .catch((err) => {
-            res.json({"Account Failed to Create!": err})
+            res.json({"Bank Failed to Create!": err})
         })
 })
 
 
+// Setup Customer Routes
+app.get("/api/getCustomers", (_req, res) => {
+    getCustomers()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getCustomer", (req, res) => {
+    getCustomer(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateCustomer", (req, res) => {
+    updateCustomer(req.body)
+        .then((_data) => {
+            res.json("Account Updated!")
+        })
+})
+
+app.post("/api/createCustomer", (req, res) => {
+    createCustomer(req.body)
+        .then(() => {
+            res.json("Customer Created!")
+        })
+        .catch((err) => {
+            res.json({"Customer Failed to Create!": err})
+        })
+})
 
 // Setup main route for the website
 app.get("/", (_req, res) => {
@@ -161,7 +193,7 @@ app.get('/todos/:id', async (req, res) => {
   
   const dao = new AppDAO();
   const todoRepository = new Repository(dao);
-  //todoRepository.createTable();
+  todoRepository.createTable();
   
   app.listen(3000, () => {
     console.log('server has started on port 3000');
