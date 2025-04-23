@@ -42,9 +42,9 @@ async function getBank(body) {
 //  "Money": integer 
 //}
 async function createBank(BankData) {
-    const {Name, Addr, Money} = BankData;
+    const [Name, Addr, Money] = Object.values(BankData);
     await db.run(
-        'INSERT INTO customer(Name, Addr, Money) VALUES(?,?,?)',
+        'INSERT INTO customer(Name, Address, Money) VALUES(?,?,?)',
         [Name, Addr, Money]
     );
 }
