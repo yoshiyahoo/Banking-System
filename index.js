@@ -4,6 +4,8 @@ const cors = require('cors');
 const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
 const { getBank, getBanks, createBank, updateBank } = require('./models/BankModel')
 const { getCustomer, getCustomers, createCustomer, updateCustomer } = require('./models/CustomerModel')
+const { getLoan, getLoans, createLoan, updateLoan } = require('./models/Loans')
+const { getTransaction, getTransactions, createTransaction, updateTransaction } = require('./models/TransactionModel')
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
