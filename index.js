@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-const { getAccount, getAccounts, createAccount } = require('./models/AccountModel') 
+const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
@@ -24,6 +24,13 @@ app.get("/api/getAccount", (req, res) => {
     getAccount(req.body)
         .then((data) => {
             res.json(data)
+        })
+})
+
+app.post("/api/updateAccount", (req, res) => {
+    updateAccount(req.body)
+        .then((data) => {
+            res.json("It worked!")
         })
 })
 

@@ -49,21 +49,37 @@ async function createAccount(accountData){
     );
 }
 
-async function updateAccount(CustomerSSN,BankID,fieldsToUpdate){
+//get one account by a search query
+//the JSON needs this format
+//{
+//  "Columns": [_], (column list goes there)
+//  "Values": [_],  (values go here, some can be lists of values), both items must be the same length
+//  "AccountNumber": _
+//}
+async function updateAccount(fieldsToUpdate){
     
-    if(!fieldsToUpdate || Object.keys(fieldsToUpdate) == 0){
+    const values = Object.values(fieldsToUpdate)
+
+    if(Object.values(fieldsToUpdate)[0].length === 0) {
         throw new Error('No new items to update.');
     }
-    const setClause = Object.keys(fieldsToUpdate)
-        .map(key=> '${key} = ?')
-        .join(', '); 
-    const values = Object.values(fieldsToUpdate);
-    values.push(CustomerSSN,BankID)
-    const sql =`
-    UPDATE account SET ${setClause} WHERE customer.SSN = ? AND bank.BankID = ?; 
-    `;
-    const [result] = await db.run(sql,values);
-    return result.affectedRows;
+    else if (values[0].length !== values[1].length) {
+        throw new Error("The number of items you're updating doesn't match the amount of values provided");
+    }
+    
+    let setClause = ``
+    for(let i = 0; i < values[0].length; i += 1) {
+        setClause += `${values[0][i]} = "${values[1][i]} "`
+        if (i + 1 !== values[0].length) {
+            setClause += `,` 
+        }
+    } 
+    //const setClause = Object.keys(fieldsToUpdate)   .map(key=> '${key} = ?').join(', '); 
+    //const values = Object.values(fieldsToUpdate);
+    //values.push(CustomerSSN,BankID)
+    const sql =` UPDATE account SET ${setClause} WHERE AccountNumber = ${values[2]}`
+    const result = await db.run(sql,values)
+    return result.affectedRows
 
 
 }
