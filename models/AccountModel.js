@@ -4,21 +4,21 @@ const db = require('./db');
 
 //get all accounts in table
 async function getAccounts(){
-    const rows = await db.query('SELECT * FROM account');
+    const rows = await db.run('SELECT * FROM account');
     return rows;
 }
 
 
 //get one account by ID
 async function getAccount(AccNum){
-    const [rows] = await db.query('SELECT * FROM account WHERE AccNum == ?',[AccNum]);
+    const [rows] = await db.run('SELECT * FROM account WHERE AccNum == ?',[AccNum]);
     return rows[0];
 }
 
 //create a new account row
 async function createAccount(){
     const {AccNum, Balance, AccType, Name, Status, CustomerSSN, BankID } = accountData;
-    const [result] = await db.query(
+    const [result] = await db.run(
         'INSERT INTO account(AccNum,Balance,AccType,Name,Status,CustomerSSN,BankID) VALUES(?,?,?,?,?,?,?)',
         [AccNum, Balance, AccType, Name,Status, CustomerSSN, BankID]
     );
@@ -40,7 +40,7 @@ async function updateAccount(CustomerSSN,BankID,fieldsToUpdate){
     const sql =`
     UPDATE account SET ${setClause} WHERE customer.SSN = ? AND bank.BankID = ?; 
     `;
-    const [result] = await db.query(sql,values);
+    const [result] = await db.run(sql,values);
     return result.affectedRows;
 
 
