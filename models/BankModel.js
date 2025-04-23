@@ -1,4 +1,6 @@
-const db = require('./db');
+const { DataBase } = require("./db");
+
+const db = new DataBase();
 
 //get all Banks in table
 async function getBanks() {

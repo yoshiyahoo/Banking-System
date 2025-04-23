@@ -1,5 +1,6 @@
 //Change this object to correct DB file
-const db = require('./db');
+const { DataBase } = require("./db");
+const db = new DataBase();
 
 //get all customers in table
 async function getCustomers(){
@@ -53,7 +54,7 @@ async function getCustomer(body){
 async function createCustomer(customerData){
     const [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of] = Object.values(customerData);
     await db.run(
-        'INSERT INTO customer(SSN, FirstName, MiddleName, LastName, StreetAddress, Zip, State, DOB, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
+        'INSERT INTO customer(SSN, FirstName, MiddleName, LastName, StreetAddress, Zip, State, DateOfBirth, Sex, MemberOf) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [SSN, FName, MName, LName,Street_Addr, Zip, State, DOB, Sex, Member_Of]
     );
 
