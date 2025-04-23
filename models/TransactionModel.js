@@ -1,4 +1,3 @@
-//
 //Change this object to correct DB file
 const { DataBase } = require("./db");
 
@@ -10,19 +9,34 @@ async function getTransactions(){
     return rows;
 }
 
-
 //get one transaction by ID
-async function getTransaction(TransID){
-    const rows = await db.run('SELECT * FROM transaction WHERE TransID == ?',[TransID]);
-    return rows[0];
+async function getTransaction(Body){
+    const values = Object.values(body)
+    let whereClause = ``
+    for (let i = 0; i < values[0].length; i += 1) {
+        let set = ``;
+        if (Array.isArray(values[1][i])) {
+            set += `"${values[1][i].join("\",\"")}"`
+            whereClause += `${values[0][i]} in (${set})`
+        }
+        else {
+            whereClause += `${values[0][i]} = "${values[1][i]}"`
+        }
+        if (i + 1 != values[0].length) {
+            whereClause += ` and `
+        }
+    }
+    const sql = `SELECT * FROM transaction WHERE ${whereClause}`
+    const rows = await db.run(sql);
+    return rows;
 }
 
 //create a new transaction row
-async function createTransaction(TransID,Name,Vendor,TransType,Amt,Date,AccNum){
-    const {TransID,Name,Vendor,TransType,Amt,Date,AccNum} = transactionData;
+async function createTransaction(transactionData){
+    const [TransID,Name,Vendor,TransType,Amt,Date,AccNum] = Object.values(transactionData);
     await db.run(
         //table name might be wrong
-        'INSERT INTO transaction(TransID,Name,Vendor,TransType,Amt,Date,AccNum) VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO transaction(TransactionID,Name,Vendor,TransactionType,Amount,Date,AccountNumber) VALUES(?,?,?,?,?,?,?)',
         [TransID,Name,Vendor,TransType,Amt,Date,AccNum]
     );
 }
@@ -50,8 +64,6 @@ async function updateTransaction(fieldsToUpdate){
     const sql =` UPDATE transaction SET ${setClause} WHERE TransactionID = ${values[2]}`
     const result = await db.run(sql,values)
     return result.affectedRows
-
-
 }
 
 //all functions must be exported for user use.
