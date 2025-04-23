@@ -29,13 +29,24 @@ async function getTransaction(Body){
     const rows = await db.run(sql);
     return rows;
 }
+// {
+/*   TransactionID: int
+    transactionName: varchar
+    vendor: varchar
+    transactionType: varchar
+    Amount: int
+    transactionDate: DATE
+    AccountNumber: int
+*/
+//}
+
 
 //create a new transaction row
 async function createTransaction(transactionData){
     const [TransID,Name,Vendor,TransType,Amt,Date,AccNum] = Object.values(transactionData);
     await db.run(
         //table name might be wrong
-        'INSERT INTO transaction(TransactionID,Name,Vendor,TransactionType,Amount,Date,AccountNumber) VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO transaction(TransactionID,Name,Vendor,transactionType,Amount,transactionDate,AccountNumber) VALUES(?,?,?,?,?,?,?)',
         [TransID,Name,Vendor,TransType,Amt,Date,AccNum]
     );
 }
