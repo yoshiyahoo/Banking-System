@@ -1,6 +1,5 @@
-const { DataBase } = require("./db");
-
-const db = new DataBase();
+const { Database } = require('./db');
+const db = new Database();
 
 //get all Banks in table
 async function getBanks() {
@@ -46,7 +45,7 @@ async function getBank(body) {
 async function createBank(BankData) {
     const [Name, Addr, Money] = Object.values(BankData);
     await db.run(
-        'INSERT INTO bank(Name, Address, Money) VALUES(?,?,?)',
+        'INSERT INTO customer(Name, Address, Money) VALUES(?,?,?)',
         [Name, Addr, Money]
     );
 }
