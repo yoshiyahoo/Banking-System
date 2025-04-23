@@ -68,7 +68,7 @@ app.get("/api/getBank", (req, res) => {
 app.post("/api/updateBank", (req, res) => {
     updateBank(req.body)
         .then((_data) => {
-            res.json("Account Updated!")
+            res.json("Bank Updated!")
         })
 })
 
@@ -101,7 +101,7 @@ app.get("/api/getCustomer", (req, res) => {
 app.post("/api/updateCustomer", (req, res) => {
     updateCustomer(req.body)
         .then((_data) => {
-            res.json("Account Updated!")
+            res.json("Customer Updated!")
         })
 })
 
@@ -112,6 +112,70 @@ app.post("/api/createCustomer", (req, res) => {
         })
         .catch((err) => {
             res.json({"Customer Failed to Create!": err})
+        })
+})
+
+// Setup loan routes
+app.get("/api/getLoans", (_req, res) => {
+    getLoans()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getLoan", (req, res) => {
+    getLoan(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateLoan", (req, res) => {
+    updateLoan(req.body)
+        .then((_data) => {
+            res.json("Loan Updated!")
+        })
+})
+
+app.post("/api/createLoan", (req, res) => {
+    createLoan(req.body)
+        .then(() => {
+            res.json("Loan Created!")
+        })
+        .catch((err) => {
+            res.json({"Loan Failed to Create!": err})
+        })
+})
+
+// Setup transaction routes
+app.get("/api/getLoans", (_req, res) => {
+    getTransactions()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getLoan", (req, res) => {
+    getTransaction(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateLoan", (req, res) => {
+    updateTransaction(req.body)
+        .then((_data) => {
+            res.json("Transaction Updated!")
+        })
+})
+
+app.post("/api/createLoan", (req, res) => {
+    createTransaction(req.body)
+        .then(() => {
+            res.json("Transaction Created!")
+        })
+        .catch((err) => {
+            res.json({"Transaction Failed to Create!": err})
         })
 })
 
