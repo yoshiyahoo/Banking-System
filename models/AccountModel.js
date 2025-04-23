@@ -26,9 +26,29 @@ async function createAccount(){
 
 }
 
+//update Account table 
+async function updateAccount(CustomerSSN,BankID,fieldsToUpdate){
+    
+    if(!fieldsToUpdate || Object.keys(fieldsToUpdate) == 0){
+        throw new Error('No new items to update.');
+    }
+    const setClause = Object.keys(fieldsToUpdate)
+        .map(key=> '${key} = ?')
+        .join(', '); 
+    const values = Object.values(fieldsToUpdate);
+    values.push(CustomerSSN,BankID)
+    const sql =`
+    UPDATE account SET ${setClause} WHERE customer.SSN = ? AND bank.BankID = ?; 
+    `;
+    const [result] = await db.query(sql,values);
+    return result.affectedRows;
+
+
+}
 //all functions must be exported for user use.
 module.exports = {
     getAccounts,
     getAccount,
-    createAccount
+    createAccount,
+    updateAccount
 };
