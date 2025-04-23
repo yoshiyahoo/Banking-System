@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
+const { getBank, getBanks, createBank } = require('./models/Bankmodel')
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
@@ -13,6 +14,8 @@ const { getAccount, getAccounts, updateAccount, createAccount } = require('./mod
 app.use(express.json())
 app.use(cors()) // make sure it's a function call omg
 
+
+// Setup Account Routes
 app.get("/api/getAccounts", (_req, res) => {
     getAccounts()
         .then((data) => {
@@ -35,8 +38,39 @@ app.post("/api/updateAccount", (req, res) => {
 })
 
 app.post("/api/createAccount", (req, res) => {
-    console.log(req.body)
     createAccount(req.body)
+        .then(() => {
+            res.json("Account Created!")
+        })
+        .catch((err) => {
+            res.json({"Account Failed to Create!": err})
+        })
+})
+
+// Setup Bank Routes
+app.get("/api/getBanks", (_req, res) => {
+    getBanks()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getBank", (req, res) => {
+    getBank(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/updateBank", (req, res) => {
+    updateAccount(req.body)
+        .then((_data) => {
+            res.json("Account Updated!")
+        })
+})
+
+app.post("/api/createBank", (req, res) => {
+    createBank(req.body)
         .then(() => {
             res.json("Account Created!")
         })
