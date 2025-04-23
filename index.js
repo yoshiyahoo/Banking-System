@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-const accountModels = require('./models/AccountModel') 
+const { getAccount, getAccounts, createAccount } = require('./models/AccountModel') 
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
@@ -13,15 +13,36 @@ const accountModels = require('./models/AccountModel')
 app.use(express.json())
 app.use(cors()) // make sure it's a function call omg
 
-app.get("/api/read", (_req, res) => {
-    const data = accountModels.getAccount()
-    res.json(data)
+app.get("/api/getAccounts", (_req, res) => {
+    getAccounts()
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.get("/api/getAccount", (req, res) => {
+    getAccount(req.body)
+        .then((data) => {
+            res.json(data)
+        })
+})
+
+app.post("/api/createAccount", (req, res) => {
+    console.log(req.body)
+    createAccount(req.body)
+        .then(() => {
+            res.json("Account Created!")
+        })
+        .catch((err) => {
+            res.json({"Account Failed to Create!": err})
+        })
 })
 
 app.get("/", (_req, res) => {
     path = __dirname + "/public/index.html"
-    res.send("hello world")
+    res.sendFile(path)
 })
+
 
 
 /*
