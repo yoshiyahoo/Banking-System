@@ -46,7 +46,7 @@ async function getBank(body) {
 async function createBank(BankData) {
     const [Name, Addr, Money] = Object.values(BankData);
     await db.run(
-        'INSERT INTO customer(Name, Address, Money) VALUES(?,?,?)',
+        'INSERT INTO bank(Name, Address, Money) VALUES(?,?,?)',
         [Name, Addr, Money]
     );
 }
