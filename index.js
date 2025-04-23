@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
-const { getBank, getBanks, createBank } = require('./models/Bankmodel')
+const { getBank, getBanks, createBank } = require('./models/BankModel')
 
 // const AppDAO = require('./DAO');
 // const Repository = require('./Repository');
