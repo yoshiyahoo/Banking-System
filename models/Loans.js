@@ -1,4 +1,3 @@
-//
 //Change this object to correct DB file
 const db = require('./db');
 
@@ -48,8 +47,6 @@ async function updateLoans(fieldsToUpdate){
     const sql =` UPDATE loans SET ${setClause} WHERE LoanID = ${values[2]}`
     const result = await db.run(sql,values)
     return result.affectedRows
-
-
 }
 
 //all functions must be exported for user use.
