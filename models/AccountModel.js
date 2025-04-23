@@ -83,14 +83,9 @@ async function updateAccount(fieldsToUpdate){
             setClause += `,` 
         }
     } 
-    //const setClause = Object.keys(fieldsToUpdate)   .map(key=> '${key} = ?').join(', '); 
-    //const values = Object.values(fieldsToUpdate);
-    //values.push(CustomerSSN,BankID)
     const sql =` UPDATE account SET ${setClause} WHERE AccountNumber = ${values[2]}`
     const result = await db.run(sql,values)
     return result.affectedRows
-
-
 }
 
 //all functions must be exported for user use.

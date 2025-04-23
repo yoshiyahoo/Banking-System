@@ -30,7 +30,7 @@ app.get("/api/getAccount", (req, res) => {
 app.post("/api/updateAccount", (req, res) => {
     updateAccount(req.body)
         .then((data) => {
-            res.json("It worked!")
+            res.json("Account Updated!")
         })
 })
 
