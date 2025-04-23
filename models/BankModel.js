@@ -4,24 +4,25 @@ const db = require('./db');
 
 //get all Banks in table
 async function getBanks(){
-    const rows = await db.query('SELECT * FROM bank');
+    const rows = await db.run('SELECT * FROM bank');
     return rows;
 }
 
 
 //get one Bank by ID
-async function getBank(BankID){
-    const [rows] = await db.query('SELECT * FROM bank WHERE Bank_ID == ?',[BankID]);
+async function getBank(){
+    const rows = await db.run('SELECT * FROM bank WHERE Bank_ID == ?',[Bank_ID]);
     return rows[0];
 }
 
 //create a new bank row
 //What is Bank.Money?
 async function createBank(){
-    const {BankID, Name, Addr,Money } = BankData;
-    const [result] = await db.query(
-        'INSERT INTO customer(BankID, Name, Addr,Money ) VALUES(?,?,?,?)',
-        [BankID, Name, Addr,Money ]
+    const {Bank_ID, Name, Addr,Money } = BankData;
+    const [result] = await db.run(
+        //table name might be wrong
+        'INSERT INTO customer(Bank_ID, Name, Addr,Money ) VALUES(?,?,?,?)',
+        [Bank_ID, Name, Addr,Money ]
     );
     return result.insertid;
 
