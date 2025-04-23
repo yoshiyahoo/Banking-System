@@ -10,18 +10,18 @@ async function getBanks(){
 
 
 //get one Bank by ID
-async function getBank(Bank_ID){
-    const [rows] = await db.query('SELECT * FROM bank WHERE Bank_ID == ?',[Bank_ID]);
+async function getBank(BankID){
+    const [rows] = await db.query('SELECT * FROM bank WHERE Bank_ID == ?',[BankID]);
     return rows[0];
 }
 
 //create a new bank row
 //What is Bank.Money?
 async function createBank(){
-    const {Bank_ID, Name, Addr,Money } = BankData;
+    const {BankID, Name, Addr,Money } = BankData;
     const [result] = await db.query(
-        'INSERT INTO customer(Bank_ID, Name, Addr,Money ) VALUES(?,?,?,?)',
-        [Bank_ID, Name, Addr,Money ]
+        'INSERT INTO customer(BankID, Name, Addr,Money ) VALUES(?,?,?,?)',
+        [BankID, Name, Addr,Money ]
     );
     return result.insertid;
 
