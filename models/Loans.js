@@ -4,7 +4,7 @@ const db = new Database();
 
 //get all loans in table
 async function getLoans(){
-    const rows = await db.run('SELECT * FROM loan');
+    const rows = await db.run('SELECT * FROM loans');
     return rows;
 }
 

@@ -73,6 +73,7 @@ function getLoanData() {
         })
 }
 
+// Initalize the window with this shit!!!
 window.onload = getBankData()
 
 // Takes a div and places a table inside of that div creating the table of the stuff
@@ -105,4 +106,16 @@ function displayData(data, elementID) {
 
     innerHTML += `</table>`
     return dataDiv.innerHTML = innerHTML; 
+}
+
+function displaySearchInputs(data, elementID) {
+    const divData = document.getElementById(elementID)
+    let innerHTML = ``
+    if (data.length === 0) {
+        return dataDiv.innerHTML = innerHTML
+    }
+}
+
+function displayInsertInputs(data) {
+
 }

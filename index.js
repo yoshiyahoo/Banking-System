@@ -148,30 +148,30 @@ app.post("/api/createLoan", (req, res) => {
         })
 })
 
-// Setup transaction routes
-app.get("/api/getLoans", (_req, res) => {
-    getLoans()
+// Setup loan routes
+app.get("/api/getTransactions", (_req, res) => {
+    getTransactions()
         .then((data) => {
             res.json(data)
         })
 })
 
-app.get("/api/getLoan", (req, res) => {
-    getLoan(req.body)
+app.get("/api/getTransaction", (req, res) => {
+    getTransaction(req.body)
         .then((data) => {
             res.json(data)
         })
 })
 
-app.post("/api/updateLoan", (req, res) => {
-    updateLoan(req.body)
+app.post("/api/updateTransaction", (req, res) => {
+    updateTransaction(req.body)
         .then((_data) => {
             res.json("Transaction Updated!")
         })
 })
 
-app.post("/api/createLoan", (req, res) => {
-    createLoan(req.body)
+app.post("/api/createTransaction", (req, res) => {
+    createTransaction(req.body)
         .then(() => {
             res.json("Transaction Created!")
         })

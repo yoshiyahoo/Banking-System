@@ -12,6 +12,7 @@ table {
     text-align: left;
     justify-content: center;
     border-collapse: collapse;
+    padding-bottom: 7px;
 }
 th, td {
     border: 1px solid white;
@@ -20,4 +21,9 @@ th, td {
 
 #buttonCluster {
     padding-bottom: 7px;
+}
+
+#search {
+    display: flex;
+    justify-content: center;
 }
