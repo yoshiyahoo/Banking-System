@@ -114,6 +114,9 @@ function displaySearchInputs(data, elementID) {
     if (data.length === 0) {
         return dataDiv.innerHTML = innerHTML
     }
+
+
+
 }
 
 function displayInsertInputs(data) {
