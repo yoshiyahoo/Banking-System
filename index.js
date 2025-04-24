@@ -27,7 +27,7 @@ app.get("/api/getAccounts", (_req, res) => {
         })
 })
 
-app.get("/api/getAccount", (req, res) => {
+app.post("/api/getAccount", (req, res) => {
     getAccount(req.body)
         .then((data) => {
             res.json(data)
@@ -59,7 +59,7 @@ app.get("/api/getBanks", (_req, res) => {
         })
 })
 
-app.get("/api/getBank", (req, res) => {
+app.post("/api/getBank", (req, res) => {
     getBank(req.body)
         .then((data) => {
             res.json(data)
@@ -92,7 +92,7 @@ app.get("/api/getCustomers", (_req, res) => {
         })
 })
 
-app.get("/api/getCustomer", (req, res) => {
+app.post("/api/getCustomer", (req, res) => {
     getCustomer(req.body)
         .then((data) => {
             res.json(data)
@@ -124,7 +124,7 @@ app.get("/api/getLoans", (_req, res) => {
         })
 })
 
-app.get("/api/getLoan", (req, res) => {
+app.post("/api/getLoan", (req, res) => {
     getLoan(req.body)
         .then((data) => {
             res.json(data)
@@ -156,7 +156,7 @@ app.get("/api/getTransactions", (_req, res) => {
         })
 })
 
-app.get("/api/getTransaction", (req, res) => {
+app.post("/api/getTransaction", (req, res) => {
     getTransaction(req.body)
         .then((data) => {
             res.json(data)

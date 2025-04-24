@@ -19,6 +19,10 @@ th, td {
     padding: 4px;
 }
 
+input {
+    width: 10em;
+}
+
 #buttonCluster {
     padding-bottom: 7px;
 }
@@ -29,7 +33,7 @@ th, td {
     justify-content: center;
 }
 
-#search {
+.search {
     display: grid;
     align-items: center;
     text-align: center;
