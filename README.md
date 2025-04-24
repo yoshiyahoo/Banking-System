@@ -16,5 +16,5 @@ Our application is designed with a focus on personal finance management. It allo
 
 
 ## Contributors
-Josiah [https://github.com/yoshiyahoo]
+Josiah Troup [https://github.com/yoshiyahoo]
 Monica Rico-Antonio [https://github.com/Mon-Rico]
