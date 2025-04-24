@@ -8,8 +8,9 @@ The main functionalities allow users to send queries to a DBMS and view the resu
 Our application is designed with a focus on personal finance management. It allows users to track their financial history, access detailed account information, and manage customer profiles. Key features include viewing transaction histories on all accounts, creating new customer accounts, and modifying existing profiles - allowing for user-friendly solutions for financial oversight.
 
 
-Demo Link: [Click Here!]()
+Demo Link: [Click Here!](https://youtu.be/xMv9ijMfhH0)
 Github Link: [Click Here!](https://github.com/yoshiyahoo/Banking-System/tree/main?tab=readme-ov-file#banking-system)
+Figma Link to Data Schema: [Click Here!](https://www.figma.com/board/TAOulemGLnlf4jg0ooKYqV/Welcome-to-FigJam)
 
 ## Queries Used
 The following functions consist of the common query structure:
