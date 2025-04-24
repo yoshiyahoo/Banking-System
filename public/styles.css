@@ -1,7 +1,7 @@
 body {
-    background-color: #333333;
-    color: white;
-    font-family: arial;
+    background-color: #ABC6AF;
+    color: #09202A;
+    font-family: 'Trebuchet MS';
     text-align: center;
 }
 h1 {
@@ -11,11 +11,11 @@ table {
     display: flex;
     text-align: left;
     justify-content: center;
-    border-collapse: collapse;
     padding-bottom: 7px;
+    
 }
 th, td {
-    border: 1px solid white;
+    border: 1px solid #467A80;
     padding: 4px;
 }
 
