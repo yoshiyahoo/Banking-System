@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
 const { getBank, getBanks, createBank, updateBank } = require('./models/BankModel')
+const { getAccount, getAccounts, updateAccount, createAccount } = require('./models/AccountModel') 
 const { getCustomer, getCustomers, createCustomer, updateCustomer } = require('./models/CustomerModel')
 const { getLoan, getLoans, createLoan, updateLoan } = require('./models/Loans')
 const { getTransaction, getTransactions, createTransaction, updateTransaction } = require('./models/TransactionModel')
@@ -150,28 +150,28 @@ app.post("/api/createLoan", (req, res) => {
 
 // Setup transaction routes
 app.get("/api/getLoans", (_req, res) => {
-    getTransactions()
+    getLoans()
         .then((data) => {
             res.json(data)
         })
 })
 
 app.get("/api/getLoan", (req, res) => {
-    getTransaction(req.body)
+    getLoan(req.body)
         .then((data) => {
             res.json(data)
         })
 })
 
 app.post("/api/updateLoan", (req, res) => {
-    updateTransaction(req.body)
+    updateLoan(req.body)
         .then((_data) => {
             res.json("Transaction Updated!")
         })
 })
 
 app.post("/api/createLoan", (req, res) => {
-    createTransaction(req.body)
+    createLoan(req.body)
         .then(() => {
             res.json("Transaction Created!")
         })

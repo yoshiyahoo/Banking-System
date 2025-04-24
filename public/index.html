@@ -3,11 +3,15 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Here is some text</h1>
-        <h2>Here is some smaller text</h2>
-        <p>Here is some super small text that doesn't do too much</p>
+        <h1>Banking App</h1>
         <script src="main.js"></script>
-
-        <button onclick="getData()"> Click me </button>
+        <div id="buttonCluster">
+            <button onclick="getBankData()"> Get Banks </button>
+            <button onclick="getCustomerData()"> Get Customers </button>
+            <button onclick="getAccountData()"> Get Accounts </button>
+            <button onclick="getTransactionData()"> Get Tranactions </button>
+            <button onclick="getLoanData()"> Get Loans </button>
+        </div>
+        <div id="data"> </div>
     </body>
 </html>

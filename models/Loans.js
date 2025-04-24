@@ -25,7 +25,7 @@ async function getLoan(body) {
             whereClause += ` and `
         }
     }
-    const sql = `SELECT * FROM loan WHERE ${whereClause}`
+    const sql = `SELECT * FROM loans WHERE ${whereClause}`
     const rows = await db.run(sql);
     return rows;
 }
@@ -43,7 +43,7 @@ async function getLoan(body) {
 async function createLoan(loanData){
     const [IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy] = Object.values(loanData);
     await db.run(
-        'INSERT INTO customer(IssueDate,Principle,LoanAmoount,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
+        'INSERT INTO loans(IssueDate,Principle,LoanAmoount,Status,OfferedBy,TakenOutBy) VALUES(?,?,?,?,?,?,?)',
         [IssueDate,Principle,Loan_Amt,Status,OfferedBy,TakenOutBy]
     );
 }
@@ -55,7 +55,7 @@ async function createLoan(loanData){
 //  "Values": [_],  (values go here, some can be lists of values), both items must be the same length
 //  "LoanID": integer
 //}
-async function updateLoans(fieldsToUpdate){
+async function updateLoan(fieldsToUpdate){
     
     const values = Object.values(fieldsToUpdate)
 

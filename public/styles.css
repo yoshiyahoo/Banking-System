@@ -1,9 +1,23 @@
 body {
-    background-color: black;
+    background-color: #333333;
     color: white;
     font-family: arial;
     text-align: center;
 }
 h1 {
     text-align: center;
+}
+table {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid white;
+    padding: 4px;
+}
+
+#buttonCluster {
+    padding-bottom: 7px;
 }

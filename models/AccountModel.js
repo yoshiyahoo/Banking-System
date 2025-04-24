@@ -32,7 +32,6 @@ async function getAccount(body){
             whereClause += ` and `
         }
     }
-    console.log(whereClause)
     const sql = `SELECT * FROM account WHERE ${whereClause}`
     const rows = await db.run(sql);
     return rows;
