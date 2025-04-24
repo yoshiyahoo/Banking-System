@@ -23,7 +23,14 @@ th, td {
     padding-bottom: 7px;
 }
 
-#search {
+#searchCluster {
     display: flex;
+    text-align: left;
     justify-content: center;
+}
+
+#search {
+    display: grid;
+    align-items: center;
+    text-align: center;
 }
