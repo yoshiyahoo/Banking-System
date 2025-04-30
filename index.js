@@ -11,12 +11,11 @@ const { getTransaction, getTransactions, createTransaction, updateTransaction } 
 // const Repository = require('./Repository');
 // const Todo = require('./models');
 
-//app.use(express.static('public'));
 
 // Setup cors authentication to allow other frameworks to talk to this server
 app.use(express.json())
 app.use(cors()) // make sure it's a function call omg
-app.use(express.static("public"))
+app.use(express.static("public")) // this allows the CSS, main.js and other static items to render
 
 
 // Setup Account Routes

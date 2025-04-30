@@ -10,6 +10,7 @@ function getBankData() {
             lastData = "bank";
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
+            displayInsertItems(data, "insertCluster")
         })
         .catch((err) => {
             console.log("Unhandeled error here:" + err) 
@@ -27,6 +28,7 @@ function getCustomerData() {
             lastData = "customer";
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
+            displayInsertItems(data, "insertCluster")
         })
         .catch((err) => {
             console.log("Unhandeled error here:" + err) 
@@ -44,6 +46,7 @@ function getAccountData() {
             lastData = "account";
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
+            displayInsertItems(data, "insertCluster")
         })
         .catch((err) => {
             console.log("Unhandeled error here:" + err) 
@@ -61,6 +64,7 @@ function getTransactionData() {
             lastData = "transaction";
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
+            displayInsertItems(data, "insertCluster")
         })
         .catch((err) => {
             console.log("Unhandeled error here:" + err) 
@@ -78,6 +82,7 @@ function getLoanData() {
             lastData = "loans";
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
+            displayInsertItems(data, "insertCluster")
         })
         .catch((err) => {
             console.log("Unhandeled error here:" + err) 
@@ -117,7 +122,7 @@ function displayData(data, elementID) {
     }
 
     innerHTML += `</table>`
-    dataDiv.innerHTML = innerHTML; 
+    dataDiv.innerHTML = innerHTML;
 }
 
 
@@ -134,7 +139,6 @@ function displaySearchItems(data, elementID) {
         `
     }
     const headers = Object.keys(data[0])
-    console.log(headers)
     for (let i = 0; i < headers.length; i += 1) {
         innerHTML += `<div class = "search">`
         innerHTML += `<label>${headers[i]}</label>`
@@ -145,6 +149,7 @@ function displaySearchItems(data, elementID) {
 }
 
 function search() {
+    let hasData = false;
     const searchDivs = document.getElementsByClassName("search")
     const dataToSend = {
         columns: [],
@@ -154,11 +159,16 @@ function search() {
         const value = searchDivs[i].getElementsByTagName("input")
         const column = searchDivs[i].getElementsByTagName("label")
         if (value[0].value !== "") {
+            hasData = true;
             dataToSend.columns.push(column[0].innerText)
             dataToSend.values.push(value[0].value)
         } 
     }
     console.log(dataToSend)
+    
+    if (!hasData) {
+        return
+    }
 
     if (lastData === "account") {
         fetch("http://localhost:3000/api/getAccount", {
@@ -263,4 +273,19 @@ function search() {
     else {
         return
     }
+}
+
+function displayInsertItems(data, elementID)  {
+    // remove the primary key for each item
+    // TODO: figure out how to do this with 0 elements. Could be interesting
+    const insertDiv = document.getElementById(elementID)
+    let innerHTML = ``
+    const headers = Object.keys(data[0])
+    for (let i = 0; i < headers.length; i += 1) {
+        innerHTML += `<div class = "search">`
+        innerHTML += `<label>${headers[i]}</label>`
+        innerHTML += `<input></input>`
+        innerHTML += `</div>`
+    }
+    insertDiv.innerHTML = innerHTML;
 }
