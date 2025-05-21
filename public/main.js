@@ -114,9 +114,39 @@ function displaySearchInputs(data, elementID) {
     if (data.length === 0) {
         return dataDiv.innerHTML = innerHTML
     }
+    const headers = Object.keys(data[0])
+    for (let i = 0; i < headers.length; i += 1) {
+        innerHTML += `<div class = "search">`
+        innerHTML += `<label>${headers[i]}</label>`
+        innerHTML += `<input></input>`
+        innerHTML += `</div>`
+    }
+    dataDiv.innerHTML = innerHTML;
+}
 
-
-
+function search() {
+    let hasData = false;
+    const searchDivs = document.getElementsByClassName("search")
+    const dataToSend = {
+        columns: [],
+        values: []
+    }
+    for (let i = 0; i < searchDivs.length; i += 1) {
+        const value = searchDivs[i].getElementsByTagName("input")
+        const column = searchDivs[i].getElementsByTagName("label")
+        if (value[0].value !== "") {
+            hasData = true;
+            dataToSend.columns.push(column[0].innerText)
+            dataToSend.values.push(value[0].value)
+        } 
+    }
+    console.log(dataToSend)
+    
+    if (!hasData) {
+        // If i just use return, then this will return undefined to the user console
+        // This will be seen by the user, which we don't want
+        return console.warn("data does not exist");
+    }
 }
 
 function displayInsertInputs(data) {
