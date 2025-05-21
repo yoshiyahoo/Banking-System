@@ -1,9 +1,133 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/dist/boxicons.js" integrity="sha512-Dm5UxqUSgNd93XG7eseoOrScyM1BVs65GrwmavP0D0DujOA8mjiBfyj71wmI2VQZKnnZQsSWWsxDKNiQIqk8sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
+
+    <!-- Using a 3 column layouts-->
     <body>
-        <h1>Sketchy Bank App</h1>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navdiv">
+                <div class="webPageTitle">Sketchy Banking App<a href="#"></a></div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Bank</a></li>
+                    <li><a href="#">Customer</a></li>
+                    <li><a href="#">Loan</a></li>
+                    <li><a href="#">Transaction</a></li>
+                    <button><a href="#">SignIn</a></button>
+                    <button><a href="#">SignUp</a></button>
+                </ul>
+            </div>
+
+        </nav>
+        <!-- Header Start-->
+        <div class="wrapper-body">
+            <div class="sidebar-wrapper">
+                <div class="sidebar-top">
+                    <a href="#" class="logo-wrapper">
+                        <span class="logo">Place holder</span>
+                        <h2 class="hide">Name of Place</h2>
+                    </a>
+
+                    <div class="extend-btn">
+                        <i class="bx bxs-chevron-left"></i>
+                    </div>
+
+                    <div class="search-wrapper">
+                        <i class="bx bx-search"></i>
+                        <input type="search" placeholder="Search">
+                    </div>
+                </div>
+
+                <!-- Header End-->
+
+                <!-- SideBar links Start-->
+                <div class="sidebar-link">
+                    <ul>
+                        <li>
+                            <a href="#" class="active tooltip">
+                                <i class="bx bxs-dashboard"></i>
+                                <span class="link hide">Dashboard</span>
+                                <span class="tooltip-content">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="active tooltip">
+                                <i class="bx bxs-dashboard"></i>
+                                <span class="link hide">Dashboard</span>
+                                <span class="tooltip-content">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="active tooltip">
+                                <i class="bx bxs-line-chart"></i>
+                                <span class="link hide">Analytics</span>
+                                <span class="tooltip-content">Analytics</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="active tooltip">
+                                <i class="bx bxs-breifcase-alt"></i>
+                                <span class="link hide">Transaction</span>
+                                <span class="tooltip-content">Transaction</span>
+                            </a>
+                        </li> 
+                    </ul>
+                </div>
+                <!-- SideBar Links End-->
+
+                <!--Side Bar Bottom Starts-->
+                <div class="sidebar-bottom">
+                    <div class="sidebar-link">
+                        <ul>
+                            <li>
+                                <a href="#" class="tooltip">
+                                    <i class="bx bxs-help-circle"></i>
+                                    <span class="link hide">Help</span>
+                                    <span class="tooltip-content">Help</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="tooltip">
+                                    <i class="bx bxs-cog"></i>
+                                    <span class="link hide">Settings</span>
+                                    <span class="tooltip-content">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Profile Set Up Start-->
+                    <div class="sidebar-profile">
+                        <div class="avatar-wrapper">
+                            <!-- Place Holder Avatar Image-->
+                            <img src="/public/assets/profile.png" alt="profile" class="avatar">
+                            <div class="online-status"></div>
+                        </div>
+
+                        <div class="avatar-name hide">
+                            <div class="user-name"> User Name Here</div>
+                            <div class="email"> UserEmail@Here.com</div>
+
+                        </div>
+                    </div>
+
+                    <!-- Profile Set Up End-->
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Main container-->
+        <h1>Welcome</h1>
         <script src="main.js"></script>
         <div id="buttonCluster">
             <button onclick="getBankData()"> Get Banks </button>
@@ -12,8 +136,12 @@
             <button onclick="getTransactionData()"> Get Tranactions </button>
             <button onclick="getLoanData()"> Get Loans </button>
         </div>
+
+
         <!-- This is updated with the table data -->
         <div id="data"> </div>
+
+
         <!-- This is updated with the boxes available to users to search with -->
         <h2> Search </h2>
         <div id="searchCluster"> </div>
@@ -23,5 +151,44 @@
         <!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
         <!-- <div id="insertCluster"> </div> -->
         <!-- <div id="insertButton"> </div> -->
+    
+        <h2> To Insert </h2>
+        <!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
+        <div id="insertCluster"> 
+            <button onclick="insert()"> Insert Bank</button>
+            <button onclick="insert()"> Insert Customer</button>
+            <button onclick="insert()"> Insert Account</button>
+            <button onclick="insert()"> Insert Transaction</button>
+            <button onclick="insert()"> Insert Loan</button>
+        </div>
+        <div id="insertButton"> </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="footerContainer"> 
+                <div class="socialIcons">
+                    <a href=""><i class="fa-brands fa-github"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                <div class="footerNav">
+                    <ul> 
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Place Holder</a></li>
+
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="footerBottom">
+                <p>Copyright &copy;2025; Designed by <span class="designer">Our Names here</span></p>
+            </div>
+        </footer>
+
     </body>
 </html>
