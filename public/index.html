@@ -1,11 +1,18 @@
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Sketchy Bank App</title>
+       
+        <!-- Boxicons Link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/dist/boxicons.js" integrity="sha512-Dm5UxqUSgNd93XG7eseoOrScyM1BVs65GrwmavP0D0DujOA8mjiBfyj71wmI2VQZKnnZQsSWWsxDKNiQIqk8sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css" rel="stylesheet">
+        <!-- CSS File Link-->
+        <link rel="stylesheet" href="styles.css">
+        <script src="js/main.js" defer></script> 
     </head>
 
-    <!-- Using a 3 column layouts-->
+    <!-- Using a 2 column layouts: aside bar and main content With Navigation bar-->
     <body>
         <!-- Navigation Bar -->
         <nav class="navbar">
@@ -29,17 +36,17 @@
             <div class="sidebar-wrapper">
                 <div class="sidebar-top">
                     <a href="#" class="logo-wrapper">
-                        <span class="logo">Place holder</span>
-                        <h2 class="hide">Name of Place</h2>
+                        <span class="logo">Logo holder</span>
+                        <h2 class="hide">Logo Name</h2>
                     </a>
 
-                    <div class="extend-btn">
-                        <i class="bx bxs-chevron-left"></i>
+                    <div class="expand-btn">
+                        <i class="bx bxs-chevrons-left"></i>
                     </div>
 
                     <div class="search-wrapper">
                         <i class="bx bx-search"></i>
-                        <input type="search" placeholder="Search">
+                        <input type="search" placeholder="Search for anything...">
                     </div>
                 </div>
 
@@ -58,8 +65,8 @@
                         <li>
                             <a href="#" class="active tooltip">
                                 <i class="bx bxs-dashboard"></i>
-                                <span class="link hide">Dashboard</span>
-                                <span class="tooltip-content">Dashboard</span>
+                                <span class="link hide">Account</span>
+                                <span class="tooltip-content">Account</span>
                             </a>
                         </li>
 
@@ -125,10 +132,9 @@
         </div>
 
 
-
         <!-- Main container-->
         <h1>Welcome</h1>
-        <script src="main.js"></script>
+        <!-- <script src="main.js"></script> -->
         <div id="buttonCluster">
             <button onclick="getBankData()"> Get Banks </button>
             <button onclick="getCustomerData()"> Get Customers </button>

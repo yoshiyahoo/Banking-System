@@ -289,3 +289,29 @@ function displayInsertItems(data, elementID)  {
     }
     insertDiv.innerHTML = innerHTML;
 }
+
+
+
+//Script for collapsing sidebar//
+
+// Function to toggle the sidebar
+function toggleSidebar() {
+    document.body.classList.toggle("collapsed");
+}
+
+function expandSidebarOnSearch() {
+    document.body.classList.remove("collapsed");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const expandBtn = document.querySelector(".expand-btn");
+    const searchInput = document.querySelector(".search-wrapper input");
+
+    if (expandBtn) {
+        expandBtn.addEventListener("click", toggleSidebar);
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener("focus", expandSidebarOnSearch);
+    }
+});
