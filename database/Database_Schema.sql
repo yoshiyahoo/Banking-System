@@ -9,7 +9,7 @@ CREATE table IF NOT EXISTS bank(
 );
 
 CREATE table IF NOT EXISTS customer(
-SSN INT AUTO_INCREMENT primary key NOT NULL,
+    SSN INT primary key NOT NULL,
     FirstName varchar(20) NOT NULL,
     MiddleName varchar(20) NOT NULL,
     LastName varchar(20) NOT NULL,
@@ -23,7 +23,7 @@ SSN INT AUTO_INCREMENT primary key NOT NULL,
 );
 
 CREATE table IF NOT EXISTS account(
-AccountNumber INT AUTO_INCREMENT primary key NOT NULL,
+    AccountNumber INT AUTO_INCREMENT primary key NOT NULL,
     Balance int NOT NULL,
     AccountType varchar(20) NOT NULL,
     Name varchar(20) NOT NULL,
@@ -35,7 +35,7 @@ AccountNumber INT AUTO_INCREMENT primary key NOT NULL,
 );
 
 CREATE table IF NOT EXISTS transaction(
-TransactionID INT AUTO_INCREMENT Primary Key NOT NULL,
+    TransactionID INT AUTO_INCREMENT Primary Key NOT NULL,
     transactionName varchar(20) NOT NULL,
     vendor varchar(20) NOT NULL,
     transactionType varchar(20) NOT NULL,
@@ -46,7 +46,7 @@ TransactionID INT AUTO_INCREMENT Primary Key NOT NULL,
 );
 
 create table IF NOT EXISTS loans(
-LoanID INT AUTO_INCREMENT Primary Key NOT NULL,
+    LoanID INT AUTO_INCREMENT Primary Key NOT NULL,
     DateIssued DATE NOT NULL,
     Principle INT NOT NULL,
     loanAmount INT NOT NULL,
