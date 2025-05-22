@@ -32,7 +32,6 @@ async function getCustomer(body){
     const sql = `SELECT * FROM customer WHERE ${whereClause}`
     const rows = await db.run(sql);
     return rows;
-
 }
 
 //create a new customer row

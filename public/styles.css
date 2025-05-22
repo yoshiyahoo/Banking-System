@@ -262,8 +262,6 @@ li a{
 }
 
 
-
-
 body {
     background-color: #ABC6AF;
     color: #0D0221;
@@ -293,23 +291,17 @@ input {
     padding-bottom: 7px;
 }
 
-#searchCluster {
+#searchCluster, #insertCluster {
     display: flex;
     text-align: left;
     justify-content: center;
 }
 
-.search {
+.search, .insert {
     display: grid;
     align-items: center;
     text-align: center;
 }
-
-
-
-
-
-
 
 /* Footer CSS */
 footer{

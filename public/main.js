@@ -1,93 +1,53 @@
-let lastData = "" 
-function getBankData() {
-    fetch("http://localhost:3000/api/getBanks", {
-        method: "GET"
+// Enumerate all the different database objects 
+const databaseObjects = Object.freeze({
+    BANK: "Bank",
+    CUSTOMER: "Customer",
+    ACCOUNT: "Account",
+    TRANSACTION: "Transaction",
+    LOAN: "Loan",
+});
+let lastData = databaseObjects.BANK; 
+
+function getData(databaseObject) {
+    fetch(`http://localhost:3000/api/get${databaseObject}s`, {
+        method: "GET",
+        headers: {
+            "content-type":"application/json",
+        },
     })
         .then((res) => {
-            return res.json()
+            return res.json() // this needs to be returned from the promise
         })
         .then((data) => {
-            lastData = "bank";
+            lastData = databaseObject 
             displayData(data, "data")
             displaySearchItems(data, "searchCluster")
-            displayInsertItems(data, "insertCluster")
+            displayInsertItems(databaseObject, "insertCluster")
         })
-        .catch((err) => {
-            console.log("Unhandeled error here:" + err) 
-        })
+
+}
+
+/// These 5 functions are what the HTML can call
+function getBankData() {
+    getData(databaseObjects.BANK);
 }
 
 function getCustomerData() {
-    fetch("http://localhost:3000/api/getCustomers", {
-        method: "GET"
-    })
-        .then((res) => {
-            return res.json()
-        })
-        .then((data) => {
-            lastData = "customer";
-            displayData(data, "data")
-            displaySearchItems(data, "searchCluster")
-            displayInsertItems(data, "insertCluster")
-        })
-        .catch((err) => {
-            console.log("Unhandeled error here:" + err) 
-        })
+    getData(databaseObjects.CUSTOMER);
 }
 
 function getAccountData() {
-    fetch("http://localhost:3000/api/getAccounts", {
-        method: "GET"
-    })
-        .then((res) => {
-            return res.json()
-        })
-        .then((data) => {
-            lastData = "account";
-            displayData(data, "data")
-            displaySearchItems(data, "searchCluster")
-            displayInsertItems(data, "insertCluster")
-        })
-        .catch((err) => {
-            console.log("Unhandeled error here:" + err) 
-        })
+    getData(databaseObjects.ACCOUNT);
 }
 
 function getTransactionData() {
-    fetch("http://localhost:3000/api/getTransactions", {
-        method: "GET"
-    })
-        .then((res) => {
-            return res.json()
-        })
-        .then((data) => {
-            lastData = "transaction";
-            displayData(data, "data")
-            displaySearchItems(data, "searchCluster")
-            displayInsertItems(data, "insertCluster")
-        })
-        .catch((err) => {
-            console.log("Unhandeled error here:" + err) 
-        })
+    getData(databaseObjects.TRANSACTION);
 }
 
 function getLoanData() {
-    fetch("http://localhost:3000/api/getLoans", {
-        method: "GET"
-    })
-        .then((res) => {
-            return res.json()
-        })
-        .then((data) => {
-            lastData = "loans";
-            displayData(data, "data")
-            displaySearchItems(data, "searchCluster")
-            displayInsertItems(data, "insertCluster")
-        })
-        .catch((err) => {
-            console.log("Unhandeled error here:" + err) 
-        })
+    getData(databaseObjects.LOAN);
 }
+/// This is where it ends
 
 // Initalize the window with this shit!!!
 window.onload = getBankData()
@@ -104,14 +64,14 @@ function displayData(data, elementID) {
     }
     innerHTML += `<table>` 
     innerHTML += `<tr>`
-    // get the headers
+    // format the headers
     const headers = Object.keys(data[0])
     for (let i = 0; i < headers.length; i += 1) {
         innerHTML += `<th> ${headers[i]} </th>` 
     }
     innerHTML += `</tr>`
 
-    // get the data
+    // format the data
     for (let j = 0; j < data.length; j += 1) {
         const values = Object.values(data[j])
         innerHTML += `<tr>`
@@ -137,6 +97,7 @@ function displaySearchItems(data, elementID) {
         searchDiv.innerHTML = `
             <p> Nothing to serach </p>
         `
+        return;
     }
     const headers = Object.keys(data[0])
     for (let i = 0; i < headers.length; i += 1) {
