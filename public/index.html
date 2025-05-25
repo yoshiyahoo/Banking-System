@@ -31,7 +31,6 @@
                 </ul>
             </div>
         </nav>
-
         
         <!-- Header Start-->
         <div class="wrapper-body">
@@ -149,18 +148,17 @@
         <!-- This is updated with the table data -->
         <div id="data"> </div>
 
-
         <!-- This is updated with the boxes available to users to search with -->
         <h2> Search </h2>
         <div id="searchCluster"> </div>
-        <button onclick="search()"> Search </button>
+        <button id="searchButton" onclick="search()"> Search </button>
         
         <h2> Insert </h2> 
         <!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
         <div id="insertCluster"> </div> 
-        <button onclick="insert()"> Add </button> 
+        <button id="insertButton" onclick="insert()"> Add </button> 
 
-    <!-- Footer -->
+        <!-- Footer -->
         <footer>
             <div class="footerContainer"> 
                 <div class="socialIcons">
@@ -185,6 +183,5 @@
                 <p>Copyright &copy;2023; Designed by <span class="designer">Our Names here</span></p>
             </div>
         </footer>
-
     </body>    
 </html>

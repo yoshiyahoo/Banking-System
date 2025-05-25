@@ -347,7 +347,7 @@ input {
     width: 10em;
 }
 
-#buttonCluster {
+#getDataCluster {
     padding-bottom: 7px;
     text-align: center;
 }
@@ -356,6 +356,11 @@ input {
     display: flex;
     text-align: left;
     justify-content: center;
+}
+
+#searchButton, #insertButton {
+    display: block;
+    margin: auto;
 }
 
 .search, .insert {
@@ -369,8 +374,8 @@ footer{
     background-color:#52796F;
     text-align: center;
 }
+/* We don't need a width field, the container spans the entire page */
 .footerContainer{
-    width: 100%;
     padding: 70px 30px 20px;
 }
 .socialIcons{
@@ -442,8 +447,6 @@ footer{
     font-weight: 400;
     margin: 0px 5px;
 }
-
-
 
 /* media Footer */
 @media (max-width: 700px){

@@ -125,7 +125,6 @@ function search() {
             dataToSend.values.push(value[0].value)
         } 
     }
-    console.log(dataToSend)
     
     if (!hasData) {
         return
