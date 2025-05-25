@@ -127,130 +127,113 @@ function search() {
     }
     
     if (!hasData) {
-        return
+        // If i just use return, then this will return undefined to the user console
+        // This will be seen by the user, which we don't want
+        return null; //This will not be seen by the user
     }
-
-    if (lastData === "account") {
-        fetch("http://localhost:3000/api/getAccount", {
-            method: "POST",
-            body: JSON.stringify(dataToSend),
-            headers: {
-                "content-type":"application/json"
-            }
+    
+    fetch(`http://localhost:3000/api/get${lastData}`, {
+        method: "POST",
+        body: JSON.stringify(dataToSend),
+        headers: {
+            "content-type":"application/json"
+        }
+    })
+        .then((res) => {
+            return res.json();
         })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                lastData = "account";
-                displayData(data, "data")
-                displaySearchItems(data, "searchCluster")
-            })
-            .catch((err) => {
-                console.log("Unhandeled error here:" + err) 
-            })
-    }
-    else if (lastData === "bank") {
-        fetch("http://localhost:3000/api/getBank", {
-            method: "POST",
-            body: JSON.stringify(dataToSend),
-            headers: {
-                "content-type":"application/json"
-            }
+        .then((data) => {
+            displayData(data, "data")
+            displaySearchItems(data, "searchCluster")
         })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                lastData = "bank";
-                displayData(data, "data")
-                displaySearchItems(data, "searchCluster")
-            })
-            .catch((err) => {
-                console.log("Unhandeled error here:" + err) 
-            })
-    }
-    else if (lastData === "customer") {
-        fetch("http://localhost:3000/api/getCustomer", {
-            method: "POST",
-            body: JSON.stringify(dataToSend),
-            headers: {
-                "content-type":"application/json"
-            }
-        })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                lastData = "customer";
-                displayData(data, "data")
-                displaySearchItems(data, "searchCluster")
-            })
-            .catch((err) => {
-                console.log("Unhandeled error here:" + err) 
-            })
-    }
-    else if (lastData === "transaction") {
-        fetch("http://localhost:3000/api/getTransaction", {
-            method: "POST",
-            body: JSON.stringify(dataToSend),
-            headers: {
-                "content-type":"application/json"
-            }
-        })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                lastData = "transaction";
-                displayData(data, "data")
-                displaySearchItems(data, "searchCluster")
-            })
-            .catch((err) => {
-                console.log("Unhandeled error here:" + err) 
-            })
-    }
-    else if (lastData === "loans") {
-        fetch("http://localhost:3000/api/getLoan", {
-            method: "POST",
-            body: JSON.stringify(dataToSend), // I must serialize the JSON so it's not undefined
-            headers: {
-                "content-type":"application/json" // make sure that the server knows you're sending JSON
-            }
-        })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                lastData = "loans";
-                displayData(data, "data")
-                displaySearchItems(data, "searchCluster")
-            })
-            .catch((err) => {
-                console.log("Unhandeled error here:" + err) 
-            })
-    }
-    else {
-        return
-    }
 }
 
-function displayInsertItems(data, elementID)  {
+
+function createInsertElement(header) {
+    let innerHTML = ``;
+    innerHTML += `<div class = "insert">`
+    innerHTML += `<label>${header}</label>`
+    innerHTML += `<input></input>`
+    innerHTML += `</div>`
+    return innerHTML;
+}
+
+function displayInsertItems(databaseObject, elementID) {
     // remove the primary key for each item
     // TODO: figure out how to do this with 0 elements. Could be interesting
     const insertDiv = document.getElementById(elementID)
     let innerHTML = ``
-    const headers = Object.keys(data[0])
-    for (let i = 0; i < headers.length; i += 1) {
-        innerHTML += `<div class = "search">`
-        innerHTML += `<label>${headers[i]}</label>`
-        innerHTML += `<input></input>`
-        innerHTML += `</div>`
+    
+    switch (databaseObject) {
+        case databaseObjects.BANK:
+            innerHTML += createInsertElement("Name")
+            innerHTML += createInsertElement("Address")
+            innerHTML += createInsertElement("Money")
+            break;
+        case databaseObjects.ACCOUNT:
+            innerHTML += createInsertElement("Balance")
+            innerHTML += createInsertElement("AccountType")
+            innerHTML += createInsertElement("Name")
+            innerHTML += createInsertElement("Status")
+            innerHTML += createInsertElement("CustomerSSN")
+            innerHTML += createInsertElement("BankID")
+            break;
+        case databaseObjects.LOAN:
+            innerHTML += createInsertElement("DateIssued")
+            innerHTML += createInsertElement("Principle")
+            innerHTML += createInsertElement("loanAmount")
+            innerHTML += createInsertElement("loanStatus")
+            innerHTML += createInsertElement("offeredBy")
+            innerHTML += createInsertElement("takenOutBy")
+            break;
+        case databaseObjects.TRANSACTION:
+            innerHTML += createInsertElement("transactionName")
+            innerHTML += createInsertElement("vendor")
+            innerHTML += createInsertElement("transactionType")
+            innerHTML += createInsertElement("Amount")
+            innerHTML += createInsertElement("transactionDate")
+            innerHTML += createInsertElement("AccountNumber")
+            break;
+        case databaseObjects.CUSTOMER:
+            innerHTML += createInsertElement("SSN")
+            innerHTML += createInsertElement("FirstName")
+            innerHTML += createInsertElement("MiddleName")
+            innerHTML += createInsertElement("LastName")
+            innerHTML += createInsertElement("StreetAddress")
+            innerHTML += createInsertElement("Zip")
+            innerHTML += createInsertElement("State")
+            innerHTML += createInsertElement("DateOfBirth")
+            innerHTML += createInsertElement("Sex")
+            innerHTML += createInsertElement("MemberOf")
+            break;
     }
     insertDiv.innerHTML = innerHTML;
 }
 
+function insert() {
+    const elems = document.getElementsByClassName("insert"); 
+    let dataToSend = {}
+    for (let i = 0; i < elems.length; i += 1) {
+        // Go down the DOM and get the text from the label of the current item
+        const columnItem = elems[i].children[0].textContent;
+        // Go down again and grab the element written in the textbox
+        const valueToInsert = elems[i].children[1].value;
+        dataToSend[columnItem] = valueToInsert;
+    }
 
+    fetch(`http://localhost:3000/api/create${lastData}`, {
+        method: "POST",
+        body: JSON.stringify(dataToSend),
+        headers: {
+            "content-type":"application/json",
+        }
+    })
+        .then((res) => { return res.json() })
+        .then((data) => { 
+            console.log(data) 
+            getData(lastData)
+        })
+}
 
 //Script for collapsing sidebar//
 
