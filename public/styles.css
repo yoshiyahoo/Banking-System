@@ -28,6 +28,10 @@ li a{
 	color: #F4F6F3; font-size: 18px; font-weight: bold; margin-right: 25px;
 }
 
+li a:hover {
+	text-decoration: underline;
+}
+
 
 /* Side Bar */
 .wrapper-body{
