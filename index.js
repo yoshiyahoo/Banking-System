@@ -20,169 +20,170 @@ app.use(express.static("public")) // this allows the CSS, main.js and other stat
 
 // Setup Account Routes
 app.get("/api/getAccounts", (_req, res) => {
-    getAccounts()
-        .then((data) => {
-            res.json(data)
-        })
+	getAccounts()
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/getAccount", (req, res) => {
-    getAccount(req.body)
-        .then((data) => {
-            res.json(data)
-        })
+	getAccount(req.body)
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/updateAccount", (req, res) => {
-    updateAccount(req.body)
-        .then((_data) => {
-            res.json("Account Updated!")
-        })
+	updateAccount(req.body)
+		.then((_data) => {
+			res.json("Account Updated!")
+		})
 })
 
 app.post("/api/createAccount", (req, res) => {
-    createAccount(req.body)
-        .then(() => {
-            res.json("Account Created!")
-        })
-        .catch((err) => {
-            res.json({"Account Failed to Create!": err})
-        })
+	createAccount(req.body)
+		.then(() => {
+			res.json("Account Created!")
+		})
+		.catch((err) => {
+			res.json({"Account Failed to Create!": err})
+		})
 })
 
 // Setup Bank Routes
 app.get("/api/getBanks", (_req, res) => {
-    getBanks()
-        .then((data) => {
-            res.json(data)
-        })
+	getBanks()
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/getBank", (req, res) => {
-    getBank(req.body)
-        .then((data) => {
-            res.json(data)
-        })
+	getBank(req.body)
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/updateBank", (req, res) => {
-    updateBank(req.body)
-        .then((_data) => {
-            res.json("Bank Updated!")
-        })
+	updateBank(req.body)
+		.then((_data) => {
+			res.json("Bank Updated!")
+		})
 })
 
 app.post("/api/createBank", (req, res) => {
-    createBank(req.body)
-        .then(() => {
-            res.json("Bank Created!")
-        })
-        .catch((err) => {
-            res.json({"Bank Failed to Create!": err})
-        })
+	createBank(req.body)
+		.then(() => {
+			res.json("Bank Created!")
+		})
+		.catch((err) => {
+			res.json({"Bank Failed to Create!": err})
+		})
 })
 
 
 // Setup Customer Routes
 app.get("/api/getCustomers", (_req, res) => {
-    getCustomers()
-        .then((data) => {
-            res.json(data)
-        })
+	getCustomers()
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/getCustomer", (req, res) => {
-    getCustomer(req.body)
-        .then((data) => {
-            res.json(data)
-        })
+	getCustomer(req.body)
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/updateCustomer", (req, res) => {
-    updateCustomer(req.body)
-        .then((_data) => {
-            res.json("Customer Updated!")
-        })
+	updateCustomer(req.body)
+		.then((_data) => {
+			res.json("Customer Updated!")
+		})
 })
 
 app.post("/api/createCustomer", (req, res) => {
-    createCustomer(req.body)
-        .then(() => {
-            res.json("Customer Created!")
-        })
-        .catch((err) => {
-            res.json({"Customer Failed to Create!": err})
-        })
+	createCustomer(req.body)
+		.then(() => {
+			res.json("Customer Created!")
+		})
+		.catch((err) => {
+			res.json({"Customer Failed to Create!": err})
+		})
 })
 
 // Setup loan routes
 app.get("/api/getLoans", (_req, res) => {
-    getLoans()
-        .then((data) => {
-            res.json(data)
-        })
+	getLoans()
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/getLoan", (req, res) => {
-    getLoan(req.body)
-        .then((data) => {
-            res.json(data)
-        })
+	getLoan(req.body)
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/updateLoan", (req, res) => {
-    updateLoan(req.body)
-        .then((_data) => {
-            res.json("Loan Updated!")
-        })
+	updateLoan(req.body)
+		.then((_data) => {
+			res.json("Loan Updated!")
+		})
 })
 
 app.post("/api/createLoan", (req, res) => {
-    createLoan(req.body)
-        .then(() => {
-            res.json("Loan Created!")
-        })
-        .catch((err) => {
-            res.json({"Loan Failed to Create!": err})
-        })
+	createLoan(req.body)
+		.then(() => {
+			res.json("Loan Created!")
+		})
+		.catch((err) => {
+			res.json({"Loan Failed to Create!": err})
+		})
 })
 
 // Setup loan routes
 app.get("/api/getTransactions", (_req, res) => {
-    getTransactions()
-        .then((data) => {
-            res.json(data)
-        })
+	getTransactions()
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/getTransaction", (req, res) => {
-    getTransaction(req.body)
-        .then((data) => {
-            res.json(data)
-        })
+	getTransaction(req.body)
+		.then((data) => {
+			res.json(data)
+		})
 })
 
 app.post("/api/updateTransaction", (req, res) => {
-    updateTransaction(req.body)
-        .then((_data) => {
-            res.json("Transaction Updated!")
-        })
+	updateTransaction(req.body)
+		.then((_data) => {
+			res.json("Transaction Updated!")
+		})
 })
 
 app.post("/api/createTransaction", (req, res) => {
-    createTransaction(req.body)
-        .then(() => {
-            res.json("Transaction Created!")
-        })
-        .catch((err) => {
-            res.json({"Transaction Failed to Create!": err})
-        })
+	createTransaction(req.body)
+		.then(() => {
+			res.json("Transaction Created!")
+		})
+		.catch((err) => {
+			res.json({"Transaction Failed to Create!": err})
+		})
 })
 
 // Setup main route for the website
 app.get("/", (_req, res) => {
-    path = __dirname + "/public/index.html"
-    res.sendFile(path)
+	path = __dirname + "/public/index.html"
+	res.sendFile(path)
 })
 
 app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
+
