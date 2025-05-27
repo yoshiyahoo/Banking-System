@@ -13,11 +13,10 @@
 	border-color: #0D0221;
 }
 .navdiv{
-	display: flex; 
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
-
 
 .webPageTitle{
 	font-size: 35px; font-weight: 600; color: #F4F6F3;
@@ -34,7 +33,6 @@ li a{
 .wrapper-body{
 	display: flex;
 	flex-wrap: nowrap;
-	
 }
 
 .sidebar-wrapper{
@@ -346,14 +344,18 @@ h1,h2 {
 	display: grid;
 	justify-content: center;
 	padding-bottom: 7px;
+	text-align: center;
+	white-space: nowrap;
 }
-th, td {
+
+#data th, #data td {
 	border: 1px solid #52796F;
 	padding: 4px;
 	text-align: left;
+	max-lines: 1;
 }
 
-input {
+.search input, .insert input {
 	width: 9em;
 }
 
@@ -364,8 +366,9 @@ input {
 
 #searchCluster, #insertCluster {
 	display: flex;
+	flex-wrap: wrap;
 	text-align: left;
-	justify-content: center;
+	justify-content: safe center;
 }
 
 #searchButton, #insertButton {
@@ -380,7 +383,7 @@ input {
 }
 
 /* Footer CSS */
-footer{
+footer {
 	background-color:#52796F;
 	text-align: center;
 }

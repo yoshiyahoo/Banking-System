@@ -52,7 +52,7 @@ function getLoanData() {
 // Initalize the window with this shit!!!
 window.onload = getBankData()
 
-// Takes a div and places a table inside of that div creating the table of the stuff
+// Takes a table and places data inside the table
 function displayData(data, elementID) {
 	const dataDiv = document.getElementById(elementID)
 	let innerHTML = ``;
@@ -62,7 +62,6 @@ function displayData(data, elementID) {
 		`
 		return
 	}
-	innerHTML += `<table>` 
 	innerHTML += `<tr>`
 	// format the headers
 	const headers = Object.keys(data[0])
@@ -81,7 +80,6 @@ function displayData(data, elementID) {
 		innerHTML += `</tr>`
 	}
 
-	innerHTML += `</table>`
 	dataDiv.innerHTML = innerHTML;
 }
 

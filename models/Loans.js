@@ -3,7 +3,7 @@ const { Database } = require('./db');
 const db = new Database();
 
 //get all loans in table
-async function getLoans(){
+async function getLoans() {
 	const rows = await db.run('SELECT * FROM loans');
 	return rows;
 }

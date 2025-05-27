@@ -1,6 +1,6 @@
 //Change all object to Account objects
 //Change this object to correct DB file
-const { Database } = require("./db"); 
+const { Database } = require('./db');
 const db = new Database()
 
 //get all accounts in table

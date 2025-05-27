@@ -31,8 +31,6 @@ async function getTransaction(Body){
 }
 
 
-
-
 /* {
 	transactionName: varchar
 	vendor: varchar

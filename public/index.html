@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -20,12 +21,12 @@
 			<div class="navdiv">
 				<div class="webPageTitle">Sketchy Banking App<a href="#"></a></div>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Account</a></li>
-					<li><a href="#">Bank</a></li>
-					<li><a href="#">Customer</a></li>
-					<li><a href="#">Loan</a></li>
-					<li><a href="#">Transaction</a></li>
+					<li><a href="#" onclick="getBankData()">Home</a></li>
+					<li><a href="#" onclick="getAccountData()">Account</a></li>
+					<li><a href="#" onclick="getBankData()">Bank</a></li>
+					<li><a href="#" onclick="getCustomerData()">Customer</a></li>
+					<li><a href="#" onclick="getLoanData()">Loan</a></li>
+					<li><a href="#" onclick="getTransactionData()">Transaction</a></li>
 					<button><a href="#">SignIn</a></button>
 					<button><a href="#">SignUp</a></button>
 				</ul>
@@ -86,7 +87,7 @@
 									<span class="link hide">Transaction</span>
 									<span class="tooltip-content">Transaction</span>
 								</a>
-							</li> 
+							</li>
 						</ul>
 					</div>
 					<!-- SideBar Links End-->
@@ -147,13 +148,12 @@
 
 
 				<!-- This is updated with the table data -->
-				<div id="data"> </div>
+				<table id="data"> </table>
 
 				<!-- This is updated with the boxes available to users to search with -->
 				<h2> Search </h2>
 				<div id="searchCluster"> </div>
 				<button id="searchButton" onclick="search()"> Search </button>
-
 				<h2> Insert </h2>
 				<!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
 				<div id="insertCluster"> </div>
@@ -183,7 +183,7 @@
 
 			</div>
 			<div class="footerBottom">
-				<p>Copyright &copy;2023; Designed by <span class="designer">Our Names here</span></p>
+				<p>Copyright &copy;2023; Designed by <span class="designer">Josiah & Monica</span></p>
 			</div>
 		</footer>
 	</body>
