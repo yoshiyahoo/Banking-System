@@ -9,8 +9,6 @@ class Database {
 			return Database.instance
 		}
 
-		console.log(process.env.PASSWORD);
-
 		Database.instance = this;
 		// Set up the database connection for a one time connection
 		this.connection = mysql.createConnection({
