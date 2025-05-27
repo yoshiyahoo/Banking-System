@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 const Promise = require('bluebird');
-
+require("dotenv").config(); // load the secrets from the .env file
 class Database {
 	static instance;
 
@@ -9,14 +9,16 @@ class Database {
 			return Database.instance
 		}
 
+		console.log(process.env.PASSWORD);
+
 		Database.instance = this;
 		// Set up the database connection for a one time connection
 		this.connection = mysql.createConnection({
-			host: '127.0.0.1', // Your database host
-			user: 'root', // Your MySQL username
-			password: '082102', // Your MySQL password
-			port: '3306', // Your MySQL port, normally "3306"
-			database: 'test', // DO NOT EDIT (You need to create a "test" database from your "MySQL Workbench")
+			host: process.env.DB_HOST, // Your database host
+			user: process.env.DB_USERNAME, // Your MySQL username
+			password: process.env.DB_PASSWORD, // Your MySQL password
+			port: process.env.DB_PORT, // Your MySQL port, normally "3306"
+			database: process.env.DB_NAME, // DO NOT EDIT (You need to create a "test" database from your "MySQL Workbench")
 		});
 
 		// Connect to the database
