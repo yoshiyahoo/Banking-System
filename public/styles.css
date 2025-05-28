@@ -334,7 +334,7 @@ h1,h2 {
 	text-align: center;
 }
 /* Show the data bar and the main slide on the same line */
-#main {
+main {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	justify-items: left;
