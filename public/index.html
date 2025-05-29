@@ -13,47 +13,45 @@
 
     </head>
 
-	<!-- Using a 2 column layouts: aside bar and main content With Navigation bar-->
 	<body>
 		<div include-html="nav.html"></div>
 		<main>
-			<!-- data container-->
-			<div id = "dataView">
-				<h1>Welcome</h1>
-				<div> 
-					<h2>
-						What we offer!
-					</h2>
-				</div>
-				<script src="main.js"></script>
-				<div id="getDataCluster">
-					<button onclick="getBankData()"> Get Banks </button>
-					<button onclick="getCustomerData()"> Get Customers </button>
-					<button onclick="getAccountData()"> Get Accounts </button>
-					<button onclick="getTransactionData()"> Get Tranactions </button>
-					<button onclick="getLoanData()"> Get Loans </button>
-				</div>
+			<div class="signup-ad-container">
+				<div class="signup-ad-background">
+					<h1 class="ad-subtitle"> New Members?</h1>
+					<h2 class="ad-description"> It's quick and easy</h2>
+					<button> Click here</button>
+					<img src="/public/assets/profile.png" alt="ad-pic1" class="ad-pic">
+				</div>	
+			</div>
+			
 
 
-        <!-- Main container-->
-        <h1>Welcome</h1>
-        <!-- <script src="main.js"></script> -->
-        <div id="buttonCluster">
-            <button onclick="getBankData()"> Get Banks </button>
-            <button onclick="getCustomerData()"> Get Customers </button>
-            <button onclick="getAccountData()"> Get Accounts </button>
-            <button onclick="getTransactionData()"> Get Tranactions </button>
-            <button onclick="getLoanData()"> Get Loans </button>
-        </div>
+			<!-- Main container -->
+				<!-- data container-->
+				<div id = "dataView">
+					<h1>Welcome</h1>
+					<script src="main.js"></script>
+					<div id="getDataCluster">
+						<button onclick="getBankData()"> Get Banks </button>
+						<button onclick="getCustomerData()"> Get Customers </button>
+						<button onclick="getAccountData()"> Get Accounts </button>
+						<button onclick="getTransactionData()"> Get Tranactions </button>
+						<button onclick="getLoanData()"> Get Loans </button>
+					</div>
 
-				<!-- This is updated with the boxes available to users to search with -->
-				<h2> Search </h2>
-				<div id="searchCluster"> </div>
-				<button id="searchButton" onclick="search()"> Search </button>
-				<h2> Insert </h2>
-				<!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
-				<div id="insertCluster"> </div>
-				<button id="insertButton" onclick="insert()"> Add </button> 
+					
+					<!-- This is updated with the table data -->
+					<table id="data"> </table>
+
+					<!-- This is updated with the boxes available to users to search with -->
+					<h2> Search </h2>
+					<div id="searchCluster"> </div>
+					<button id="searchButton" onclick="search()"> Search </button>
+					<h2> Insert </h2>
+					<!-- This cluster has all text fields needed to insert plus an extra button to insert too -->
+					<div id="insertCluster"> </div>
+					<button id="insertButton" onclick="insert()"> Add </button> 
 			</div>
 		</main>
 		

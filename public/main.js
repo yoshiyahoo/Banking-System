@@ -311,12 +311,10 @@ document.addEventListener("DOMContentLoaded", function () {
         expandBtn.addEventListener("click", toggleSidebar);
     }
 
-<<<<<<< Updated upstream
     if (searchInput) {
         searchInput.addEventListener("focus", expandSidebarOnSearch);
     }
 });
-=======
 
 /* adds layout to other pages as needed */
 function includeHTML() {
@@ -340,4 +338,3 @@ function includeHTML() {
 }
 
 window.addEventListener('DOMContentLoaded', includeHTML);
->>>>>>> Stashed changes
