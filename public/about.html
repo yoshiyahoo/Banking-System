@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Banking App - Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Boxicons Link-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link href="https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!-- CSS File Link-->
+		<link rel="stylesheet" href="/public/styles.css">
+		<script src="\public\main.js" defer></script> 
+
+    </head>
+    <body>
+		<!--Navigation Bar-->
+		<div include-html="nav.html"></div>
+
+		<main>
+			<div class="about-container">
+				<!-- Decription should go under the placeholder image -->
+				<div class="background-container">
+					<img src="/public/assets/logo-placeholder-image.png" alt="logo-holder" class="logo">
+				</div>
+			</div>
+			<div class="about-container">
+				<section>
+					<h1>
+						What We Do
+					</h1>
+					<h3 class="about-description"> This is a project for our Database Architecture class involving a banking system with a MySQL database connected.
+						We will develop a web application program that combines SQL statements and a host language, which a GUI will automatically execute. 
+						We develop a basic web app functionality sending queries to the DBMS and showing the results on the website.
+						The main functionalities allow users to send queries to a DBMS and view the results directly on the website. 
+						By using MySQL and Node.js, we establish a server to database connection, where the server is able to gather specific data from the database, then can be formatted and presented to the frontend. 
+						With the use of Yaak, an open-source api, we conducted debugging and unit testing from the Node.js server to the DBMS, which allows us to optimize queries for data gathering.
+						Our application is designed with a focus on personal finance management. It allows users to track their financial history, access detailed account information, and manage customer profiles. 
+						Key features include viewing transaction histories on all accounts, creating new customer accounts, and modifying existing profiles - allowing for user-friendly solutions for financial oversight.
+					</h3>
+				</section>
+
+			</div>
+			
+		</main>
+
+		<!--Footer-->
+		<div include-html="footer.html"></div>
+    </body>
+</html>
