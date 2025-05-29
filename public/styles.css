@@ -1,5 +1,5 @@
 *{
-    text-decoration: none;
+	text-decoration: none;
 }
 
 /* Navigation Bar */
@@ -13,11 +13,10 @@
     border-color: #0D0221;
 }
 .navdiv{
-    display: flex; 
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
-
 
 .webPageTitle{
 	font-size: 30px; font-weight: 500; color: #EEF0EB;
@@ -25,7 +24,7 @@
     padding-right: 0.5%;
 }
 li{
-    list-style: none; display: inline-block;
+	list-style: none; display: inline-block;
 }
 li a{
 	color: #EEF0EB; font-size: 18px; font-weight: bold; margin-right: 25px;
@@ -87,27 +86,28 @@ main {
     padding:20px;
 }
 
-#buttonCluster {
-    padding-bottom: 7px;
-    text-align: center;
+#data {
+	display: grid;
+	justify-content: center;
+	padding-bottom: 7px;
+	text-align: center;
+	white-space: nowrap;
 }
 
-#searchCluster {
-    padding-bottom: 7px;
-    text-align: center;
-    justify-content: center;
+#data th, #data td {
+	border: 1px solid #52796F;
+	padding: 4px;
+	text-align: left;
+	max-lines: 1;
 }
 
-.search {
-    display: grid;
-    align-items: center;
-    text-align: center;
+.search input, .insert input {
+	width: 9em;
 }
 
-#insertCluster{
-    padding-bottom: 7px;
-    text-align: center;
-    justify-content: center;
+#getDataCluster {
+	padding-bottom: 7px;
+	text-align: center;
 }
 
 /* About CSS */
@@ -153,40 +153,55 @@ div.desc {
   padding: 15px;
   text-align: center;
 }
+#searchCluster, #insertCluster {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: left;
+	justify-content: safe center;
+}
 
+#searchButton, #insertButton {
+	display: block;
+	margin: auto;
+}
 
+.search, .insert {
+	display: grid;
+	align-items: center;
+	text-align: center;
+}
 
 /* Footer CSS */
-footer{
-    background-color:#52796F;
-    text-align: center;
+footer {
+	background-color:#52796F;
+	text-align: center;
 }
+/* We don't need a width field, the container spans the entire page */
 .footerContainer{
-    width: 100%;
-    padding: 70px 30px 20px;
+	padding: 70px 30px 20px;
 }
 .socialIcons{
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 .socialIcons a{
-    text-decoration: none;
-    padding: 10px; 
-    background-color: #ABC6AF;
-    margin: 10px;
-    border-radius: 50%;
+	text-decoration: none;
+	padding: 10px; 
+	background-color: #ABC6AF;
+	margin: 10px;
+	border-radius: 50%;
 }
 .socialIcons a i{
-    font-size: 2em;
-    color: #52796F;
-    opacity: 0.9;
+	font-size: 2em;
+	color: #52796F;
+	opacity: 0.9;
 }
 
 /* Hover Effects on Social Media Icons */
 .socialIcons a:hover{
-    background-color: #ABC6AF;
-    opacity: 0.8;
-    transition: 0.5s;
+	background-color: #ABC6AF;
+	opacity: 0.8;
+	transition: 0.5s;
 }
 
 .socialIcons a:hover i{
@@ -195,13 +210,13 @@ footer{
 }
 
 .footerNav{
-    margin: 30px 0;
+	margin: 30px 0;
 }
 
 .footer ul{
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
 }
 
 .footerNav ul li a{
@@ -214,13 +229,13 @@ footer{
 }
 
 .footer ul li a:hover{
-    opacity: 1;
+	opacity: 1;
 }
 
 .footerBottom{
-    background-color: #4A6D65;
-    padding:20px;
-    text-align: center;
+	background-color: #4A6D65;
+	padding:20px;
+	text-align: center;
 }
 
 .footerBottom p{
@@ -228,23 +243,21 @@ footer{
 }
 
 .designer{
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-    margin: 0px 5px;
+	opacity: 0.7;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	margin: 0px 5px;
 }
-
-
 
 /* media Footer */
 @media (max-width: 700px){
-        .footerNav ul{
-            flex-direction: column;
-        }
-        .footerNav ul li{
-            width: 100%;
-            text-align: center;
-            margin: 10px;
-        }
+	.footerNav ul{
+		flex-direction: column;
+	}
+	.footerNav ul li{
+		width: 100%;
+		text-align: center;
+		margin: 10px;
+	}
 }
