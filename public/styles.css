@@ -204,16 +204,17 @@ main {
 	background-color:#4A6D65;
 	border-bottom-style: solid;
 	border-color: #2b5148;
-	padding: 70px 30px 20px; 
+	padding: 70px 30px 20px;
 }
 
 .about-section{
-	background-image: url('defaultLandscape.png');
 	color:#0D0221;
     font-size:25px;
     font-weight: bold;
 }
-
+.about-section3{
+	background-image: url('defaultLandscape.png');
+}
 .about-container{
 	display: flex;
 	justify-content: left;
@@ -224,6 +225,7 @@ main {
 	color:#0D0221;
     font-size:25px;
     font-weight: bold;
+
 	justify-content: left;
 }
 .about-description{
