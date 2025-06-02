@@ -267,6 +267,7 @@ main {
 }
 
 .about-container{
+	background-image: url('defaultLandscape.png');
 	text-align: center;
 }
 
