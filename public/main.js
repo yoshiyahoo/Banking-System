@@ -1,12 +1,12 @@
 // Enumerate all the different database objects 
-const databaseObjects = Object.freeze({
+var databaseObjects = Object.freeze({
 	BANK: "Bank",
 	CUSTOMER: "Customer",
 	ACCOUNT: "Account",
 	TRANSACTION: "Transaction",
 	LOAN: "Loan",
 });
-let lastData = databaseObjects.BANK; 
+var lastData = databaseObjects.BANK;
 
 function getData(databaseObject) {
 	fetch(`http://localhost:3000/api/get${databaseObject}s`, {
@@ -19,7 +19,7 @@ function getData(databaseObject) {
 			return res.json() // this needs to be returned from the promise
 		})
 		.then((data) => {
-			lastData = databaseObject 
+			lastData = databaseObject
 			displayData(data, "data")
 			displaySearchItems(data, "searchCluster")
 			displayInsertItems(databaseObject, "insertCluster")
@@ -55,6 +55,9 @@ window.onload = getBankData()
 // Takes a table and places data inside the table
 function displayData(data, elementID) {
 	const dataDiv = document.getElementById(elementID)
+	if (dataDiv == null) {
+		return
+	}
 	let innerHTML = ``;
 	if (data.length === 0) {
 		dataDiv.innerHTML = `
@@ -90,6 +93,9 @@ function displayData(data, elementID) {
 //</div>
 function displaySearchItems(data, elementID) {
 	const searchDiv = document.getElementById(elementID)
+	if (searchDiv == null) {
+		return
+	}
 	let innerHTML = ``
 	if (data.length === 0) {
 		searchDiv.innerHTML = `
@@ -121,7 +127,7 @@ function search() {
 			hasData = true;
 			dataToSend.columns.push(column[0].innerText)
 			dataToSend.values.push(value[0].value)
-		} 
+		}
 	}
 	
 	if (!hasData) {
@@ -160,6 +166,9 @@ function displayInsertItems(databaseObject, elementID) {
 	// remove the primary key for each item
 	// TODO: figure out how to do this with 0 elements. Could be interesting
 	const insertDiv = document.getElementById(elementID)
+	if (insertDiv == null) {
+		return
+	}
 	let innerHTML = ``
 	
 	switch (databaseObject) {
@@ -210,6 +219,9 @@ function displayInsertItems(databaseObject, elementID) {
 
 function insert() {
 	const elems = document.getElementsByClassName("insert"); 
+	if (elems == null) {
+		return
+	}
 	let dataToSend = {}
 	for (let i = 0; i < elems.length; i += 1) {
 		// Go down the DOM and get the text from the label of the current item
@@ -227,8 +239,8 @@ function insert() {
 		}
 	})
 		.then((res) => { return res.json() })
-		.then((data) => { 
-			console.log(data) 
+		.then((data) => {
+			console.log(data)
 			getData(lastData)
 		})
 }
@@ -260,23 +272,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* adds layout to other pages as needed */
 function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    fetch(file)
-      .then(response => {
-        if (!response.ok) throw new Error('Failed to load ' + file);
-        return response.text();
-      })
-      .then(data => {
-        el.innerHTML = data;
-        el.removeAttribute('include-html');
-        includeHTML(); // For nested includes
-      })
-      .catch(err => {
-        el.innerHTML = `<p style="color:red;">${err.message}</p>`;
-      });
-  });
+	const elements = document.querySelectorAll('[include-html]');
+	elements.forEach(el => {
+		const file = el.getAttribute('include-html');
+		fetch(file)
+			.then(response => {
+				if (!response.ok) throw new Error('Failed to load ' + file);
+				return response.text();
+			})
+			.then(data => {
+				el.innerHTML = data;
+				el.removeAttribute('include-html');
+				includeHTML(); // For nested includes
+			})
+			.catch(err => {
+				el.innerHTML = `<p style="color:red;">${err.message}</p>`;
+			});
+	});
 }
 
 window.addEventListener('DOMContentLoaded', includeHTML);
