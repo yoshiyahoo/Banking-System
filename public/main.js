@@ -6,7 +6,7 @@ const databaseObjects = Object.freeze({
 	TRANSACTION: "Transaction",
 	LOAN: "Loan",
 });
-let lastData = databaseObjects.BANK; 
+let lastData = databaseObjects.BANK;
 
 function getData(databaseObject) {
 	fetch(`http://localhost:3000/api/get${databaseObject}s`, {
@@ -260,23 +260,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* adds layout to other pages as needed */
 function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    fetch(file)
-      .then(response => {
-        if (!response.ok) throw new Error('Failed to load ' + file);
-        return response.text();
-      })
-      .then(data => {
-        el.innerHTML = data;
-        el.removeAttribute('include-html');
-        includeHTML(); // For nested includes
-      })
-      .catch(err => {
-        el.innerHTML = `<p style="color:red;">${err.message}</p>`;
-      });
-  });
+	const elements = document.querySelectorAll('[include-html]');
+	elements.forEach(el => {
+		const file = el.getAttribute('include-html');
+		console.log(file);
+		fetch(file)
+			.then(response => {
+				if (!response.ok) throw new Error('Failed to load ' + file);
+				return response.text();
+			})
+			.then(data => {
+				el.innerHTML = data;
+				el.removeAttribute('include-html');
+				includeHTML(); // For nested includes
+			})
+			.catch(err => {
+				el.innerHTML = `<p style="color:red;">${err.message}</p>`;
+			});
+	});
 }
 
 window.addEventListener('DOMContentLoaded', includeHTML);
