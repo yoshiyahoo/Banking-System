@@ -1,12 +1,12 @@
 // Enumerate all the different database objects 
-const databaseObjects = Object.freeze({
+var databaseObjects = Object.freeze({
 	BANK: "Bank",
 	CUSTOMER: "Customer",
 	ACCOUNT: "Account",
 	TRANSACTION: "Transaction",
 	LOAN: "Loan",
 });
-let lastData = databaseObjects.BANK;
+var lastData = databaseObjects.BANK;
 
 function getData(databaseObject) {
 	fetch(`http://localhost:3000/api/get${databaseObject}s`, {
@@ -19,7 +19,7 @@ function getData(databaseObject) {
 			return res.json() // this needs to be returned from the promise
 		})
 		.then((data) => {
-			lastData = databaseObject 
+			lastData = databaseObject
 			displayData(data, "data")
 			displaySearchItems(data, "searchCluster")
 			displayInsertItems(databaseObject, "insertCluster")
@@ -127,7 +127,7 @@ function search() {
 			hasData = true;
 			dataToSend.columns.push(column[0].innerText)
 			dataToSend.values.push(value[0].value)
-		} 
+		}
 	}
 	
 	if (!hasData) {
@@ -239,8 +239,8 @@ function insert() {
 		}
 	})
 		.then((res) => { return res.json() })
-		.then((data) => { 
-			console.log(data) 
+		.then((data) => {
+			console.log(data)
 			getData(lastData)
 		})
 }
@@ -275,7 +275,6 @@ function includeHTML() {
 	const elements = document.querySelectorAll('[include-html]');
 	elements.forEach(el => {
 		const file = el.getAttribute('include-html');
-		console.log(file);
 		fetch(file)
 			.then(response => {
 				if (!response.ok) throw new Error('Failed to load ' + file);
