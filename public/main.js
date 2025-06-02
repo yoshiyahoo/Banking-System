@@ -55,6 +55,9 @@ window.onload = getBankData()
 // Takes a table and places data inside the table
 function displayData(data, elementID) {
 	const dataDiv = document.getElementById(elementID)
+	if (dataDiv == null) {
+		return
+	}
 	let innerHTML = ``;
 	if (data.length === 0) {
 		dataDiv.innerHTML = `
@@ -90,6 +93,9 @@ function displayData(data, elementID) {
 //</div>
 function displaySearchItems(data, elementID) {
 	const searchDiv = document.getElementById(elementID)
+	if (searchDiv == null) {
+		return
+	}
 	let innerHTML = ``
 	if (data.length === 0) {
 		searchDiv.innerHTML = `
@@ -160,6 +166,9 @@ function displayInsertItems(databaseObject, elementID) {
 	// remove the primary key for each item
 	// TODO: figure out how to do this with 0 elements. Could be interesting
 	const insertDiv = document.getElementById(elementID)
+	if (insertDiv == null) {
+		return
+	}
 	let innerHTML = ``
 	
 	switch (databaseObject) {
@@ -210,6 +219,9 @@ function displayInsertItems(databaseObject, elementID) {
 
 function insert() {
 	const elems = document.getElementsByClassName("insert"); 
+	if (elems == null) {
+		return
+	}
 	let dataToSend = {}
 	for (let i = 0; i < elems.length; i += 1) {
 		// Go down the DOM and get the text from the label of the current item
