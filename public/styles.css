@@ -115,15 +115,16 @@ h1,h2 {
 }
 
 /* Services Cards Start */
+
 .service-section-container{
 	margin:20px;
 	padding:20px;
-	border-radius: 20px;
 }
 .service-container{
 	min-height:40vh;
 	width:100%;
 	background-color: #2b5148;
+	border-radius: 20px;
 }
 
 .service-wrapper{
