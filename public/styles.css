@@ -33,7 +33,7 @@ li{
 	list-style: none; display: inline-block;
 }
 li a{
-	color: #EEF0EB; font-size: 18px; font-weight: bold; margin-right: 25px;
+	color: #2b5148; font-size: 18px; font-weight: bold; margin-right: 25px;
 }
 
 li a:hover {
@@ -42,187 +42,25 @@ li a:hover {
 
 /* Navigation Bar End */
 
-/* Sign Up Ad Start */
-
-.signup-ad-container{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	padding: 0 20px;
-	background-color: #4A6D65;
-	gap:5rem;
-
-}
-img{
-	width:90%;
-	max-width:400px;
-	object-fit:cover;
-	vertical-align:auto;
-	border: 5px solid #2b5148;
-	border-radius: 20px;
-	margin:auto;
-}
-.pic-container{
-	margin: 20px;
-	margin-right: 0;
-	background-color: #52796F;
-	padding: 50px 30px;
-	padding-right:0;
-	border-radius: 40px;
-	width: 900px;
-}
-.ad-text{
-	flex:1;
-}
-.ad-subtitle{
-	color:#EEF0EB;
-}
-.ad-description{
-	color:#EEF0EB;
-	font-size: smaller;
-}
-.signup-btn{
-	background-color: #52796F;
-	border: 2px solid;
-	border-radius: 20px;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display:block;
-	font-size: 16px;
-	transition-duration: 0.4s;
-}
-
-.signup-btn:hover{
-	background-color: #4A6D65;
-	color:#EEF0EB
-}
-
-/* Sign Up Ad End */
 
 body {
 	background-color: #ABC6AF;
 	color: #0D0221;
 	font-family: 'Trebuchet MS';
 	margin: 0;
-	padding: 0;
+    padding: 0;
 }
 h1,h2 {
 	text-align: center;
-	color: #EEF0EB ;
-}
-
-/* Services Cards Start */
-
-.service-section-container{
-	margin:20px;
-	padding:20px;
-}
-.service-container{
-	min-height:100vh;
-	width:100%;
-	background-color: #2b5148;
-	border-radius: 20px;
-}
-
-.service-wrapper{
-	padding:5% 8%;
-}
-
-.Service{
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-}
-.cards{
-	display: grid;
-	grid-template-columns: repeat(3,1fr);
-	gap:30px;
-	margin-top: 80px;
-}
-
-.card{
-	height: 350px;
-	width:370px;
-	background-color:#4A6D65;
-	padding:3% 8%;
-	border:0.2px solid rgba(114, 226, 174,0.2);
-	border-radius:8%;
-	transition:0.6s;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	position:relative;
-	overflow: hidden;
-}
-
-.card:after{
-	content:"";
-	position: absolute;
-	top: 150%;
-	left:-200px;
-	width:120%;
-	transform:rotate(50deg);
-	background-color: #EEF0EB;
-	height:18px;
-	filter:blur(30px);
-	opacity: 0.5;
-	transition:1s;
-}
-
-.card:hover:after{
-	width:225%;
-	top:-100%;
-}
-
-.card i{
-	color: #EEF0EB;
-	margin-top:30px;
-	margin-bottom: 20px;
-	font-size:4.8rem;
-}
-
-.card h1{
-	color:#EEF0EB;
-	font-size:20px;
-	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: transparent;
-	background-color: rgb(4,52,8);
-	background:linear-gradient(8deg,rgba(8,52,83,1)0%,rgba(0,230,173,1)41%,rgba(41,17,45,1)100%);
-}
-
-.card h2{
-	color:#EEF0EB;
-	font-size:20px;
-	font-weight: 600px;
-	letter-spacing: 1px;
-}
-
-.card p{
-	text-align: center;
-	width: 100%;
-	margin:12px 0;
-	color: rgb(225,225,225,0.6);
-}
-
-.card:hover{
-	background-color:transparent;
-	transform:translateY(-8px);
-	border-color:#0D0221;
-}
-
-.card:hover i{
-    color:#0D0221;  
+    color: #2b5148;
 }
 
 /* Show the data bar and the main slide on the same line */
 main {
 	/* display: grid; */
-	/* grid-template-columns: repeat(3, 1fr); */
-	/* justify-items: left; */
-	background-color:#ABC6AF;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: left;
+    background-color:#EEF0EB;
 }
 
 
@@ -336,6 +174,53 @@ div.desc {
 	align-items: center;
 	text-align: center;
 }
+
+
+/* About CSS */
+.background-container{
+    display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: left;
+    background-color:#4A6D65;
+    border-bottom-style: solid;
+    border-color: #2b5148;
+    padding: 70px 30px 20px;
+}
+
+.about-container{
+    text-align: center;
+}
+
+
+/* Our Team CSS */
+.team-container{
+    display: flex;
+	/* grid-template-columns: repeat(3, 1fr); */
+	justify-items: left;
+    background-color:#EEF0EB;
+}
+
+div.gallery{
+    margin: 5px;
+    border: 1px solid #4A6D65;
+    float: left;
+    width: 180px;
+}
+div.gallery:hover {
+  border: 1px solid #0D0221;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+
 
 /* Footer CSS */
 footer {
