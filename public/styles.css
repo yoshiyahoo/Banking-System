@@ -54,7 +54,8 @@ li a:hover {
 }
 
 .ad-pic{
-    align-content:space-around;
+    align-content: center;
+	max-block-size: 200px;
 }
 
 
