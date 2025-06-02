@@ -266,10 +266,33 @@ main {
 	padding: 70px 30px 20px;
 }
 
+.about-section{
+	color:#0D0221;
+    font-size:25px;
+    font-weight: bold;
+}
+.about-section3{
+	background-image: url('defaultLandscape.png');
+}
 .about-container{
-	text-align: center;
+	display: flex;
+	justify-content: left;
+	text-align: left;
 }
 
+.about-header{
+	color:#0D0221;
+    font-size:25px;
+    font-weight: bold;
+
+	justify-content: left;
+}
+.about-description{
+	color:#0D0221;
+    font-size:18px;
+    font-weight: normal;
+    line-height: 1.5;
+}
 
 /* Our Team CSS */
 .team-container{
