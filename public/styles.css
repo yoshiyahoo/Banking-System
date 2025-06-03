@@ -49,38 +49,27 @@ li a:hover {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	padding: 0 20px;
+	padding: 20px 20px;
 	background-color: #4A6D65;
 	gap:5rem;
-
 }
+
 img{
 	width:90%;
 	max-width:400px;
 	object-fit:cover;
 	vertical-align:auto;
-	border: 5px solid #2b5148;
-	border-radius: 20px;
-	margin:auto;
 }
-.pic-container{
-	margin: 20px;
-	margin-right: 0;
-	background-color: #52796F;
-	padding: 50px 30px;
-	padding-right:0;
-	border-radius: 40px;
-	width: 900px;
-}
+
 .ad-text{
 	flex:1;
+	justify-content: left;
 }
 .ad-subtitle{
 	color:#EEF0EB;
 }
 .ad-description{
 	color:#EEF0EB;
-	font-size: smaller;
 }
 .signup-btn{
 	background-color: #52796F;
@@ -267,8 +256,20 @@ main {
 }
 
 .about-container{
-	background-image: url('defaultLandscape.png');
-	text-align: center;
+	background-image: url('/public/assets/defaultLandscape.png');
+	background-size: cover;
+}
+
+.about-background{
+	display: flex;
+	justify-content: center;
+}
+
+.about-text{
+	padding:70 30px 20px;
+	border-radius: 8px;
+	background-color: #EEF0EB;
+	opacity: 75%;
 }
 
 
