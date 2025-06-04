@@ -232,7 +232,12 @@ main {
 	border: 1px solid #52796F;
 	padding: 4px;
 	text-align: left;
-	max-lines: 1;
+	max-width: 50em;
+	overflow: hidden;
+}
+
+#data .primaryKey {
+	background-color:#A2C1A7;
 }
 
 .search input, .insert input {

@@ -74,14 +74,35 @@ function displayData(data, elementID) {
 	innerHTML += `</tr>`
 
 	// format the data
+	// ISSUE: maybe contenteditable is the wrong approach here, could be subject to change
 	for (let j = 0; j < data.length; j += 1) {
 		const values = Object.values(data[j])
 		innerHTML += `<tr>`
 		for (let i = 0; i < values.length; i += 1) {
-			innerHTML += `<td> ${values[i]} </td>`
+			if (i == 0 && headers[i] != "SSN") {
+				innerHTML += `<td class="primaryKey">${values[i]}</td>`
+			}
+			else {
+				innerHTML += `<td contenteditable="plaintext-only">${values[i]}</td>`
+			}
 		}
 		innerHTML += `</tr>`
 	}
+
+	// add a new input on the bottom
+	innerHTML += `</tr>`
+	for (let i = 0; i < headers.length; i += 1) {
+		if (i == 0 && headers[i] != "SSN") {
+			innerHTML += `<td class="primaryKey">_</td>`
+		}
+		else if (headers[i] == "SSN") {
+			innerHTML += `<td contenteditable="plaintext-only">_</td>`
+		}
+		else {
+			innerHTML += `<td contenteditable="plaintext-only"></td>`
+		}
+	}
+	innerHTML += `</tr>`
 
 	dataDiv.innerHTML = innerHTML;
 }
