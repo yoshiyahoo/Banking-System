@@ -1,16 +1,22 @@
 *{
 	text-decoration: none;
+	/* margin:0;
+	padding:0;*/
+	box-sizing: border-box; 
 }
 
 /* Navigation Bar */
+nav{
+	position: sticky;
+}
 .navbar{
-    background-color: #2b5148;
-    font-family:'Trebuchet MS'; 
-    padding-right: 15px; 
-    padding-left: 15px;
-    border-bottom-style: solid; 
-    /* border-bottom-width: 2px;  */
-    border-color: #0D0221;
+	background-color: #2b5148;
+	font-family:'Trebuchet MS'; 
+	padding-right: 15px; 
+	padding-left: 15px;
+	border-bottom-style:solid; 
+	border-color: #474154 0.5px;
+	top:0;
 }
 .navdiv{
 	display: flex;
@@ -20,8 +26,8 @@
 
 .webPageTitle{
 	font-size: 30px; font-weight: 500; color: #EEF0EB;
-    border-right:solid #ABC6AF 0.25px;
-    padding-right: 0.5%;
+	border-right:solid #ABC6AF 0.25px;
+	padding-right: 0.5%;
 }
 li{
 	list-style: none; display: inline-block;
@@ -39,25 +45,49 @@ li a:hover {
 /* Sign Up Ad Start */
 
 .signup-ad-container{
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 20px 20px;
+	background-color: #4A6D65;
+	gap:5rem;
 }
-.signup-ad-background{
-    background-color: #ABC6AF;
-    margin:0;
-    padding:0;
+
+img{
+	width:90%;
+	max-width:400px;
+	object-fit:cover;
+	vertical-align:auto;
+}
+
+.ad-text{
+	flex:1;
+	justify-content: left;
 }
 .ad-subtitle{
-    text-align:left;
+	color:#EEF0EB;
 }
 .ad-description{
-    text-align: left;
+	color:#EEF0EB;
+}
+.signup-btn{
+	background-color: #52796F;
+	border: 2px solid;
+	border-radius: 20px;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display:block;
+	font-size: 16px;
+	transition-duration: 0.4s;
 }
 
-.ad-pic{
-    align-content: center;
-	max-block-size: 200px;
+.signup-btn:hover{
+	background-color: #4A6D65;
+	color:#EEF0EB
 }
-
 
 /* Sign Up Ad End */
 
@@ -66,11 +96,114 @@ body {
 	color: #0D0221;
 	font-family: 'Trebuchet MS';
 	margin: 0;
-    padding: 0;
+	padding: 0;
 }
 h1,h2 {
 	text-align: center;
-    color: #2b5148;
+	color: #EEF0EB ;
+}
+
+/* Services Cards Start */
+
+.service-section-container{
+	margin:20px;
+	padding:20px;
+}
+.service-container{
+	min-height:40vh;
+	width:100%;
+	background-color: #2b5148;
+	border-radius: 20px;
+}
+
+.service-wrapper{
+	padding:5% 8%;
+}
+
+.Service{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+}
+.cards{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	gap:30px;
+	margin-top: 40px;
+}
+
+.card{
+	height: 250px;
+	width:270px;
+	background-color:#4A6D65;
+	padding:3% 8%;
+	border:0.2px solid rgba(114, 226, 174,0.2);
+	border-radius:8%;
+	transition:0.6s;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	position:relative;
+	overflow: hidden;
+}
+
+.card:after{
+	content:"";
+	position: absolute;
+	top: 150%;
+	left:-200px;
+	width:120%;
+	transform:rotate(50deg);
+	background-color: #EEF0EB;
+	height:18px;
+	filter:blur(30px);
+	opacity: 0.5;
+	transition:1s;
+}
+
+.card:hover:after{
+	width:225%;
+	top:-100%;
+}
+
+.card i{
+	color: #EEF0EB;
+	margin-top:30px;
+	margin-bottom: 20px;
+	font-size:4.8rem;
+}
+
+.card h1{
+	color:#EEF0EB;
+	font-size:20px;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: transparent;
+	background-color: rgb(4,52,8);
+	background:linear-gradient(8deg,rgba(8,52,83,1)0%,rgba(0,230,173,1)41%,rgba(41,17,45,1)100%);
+}
+
+.card h2{
+	color:#EEF0EB;
+	font-size:20px;
+	font-weight: 600px;
+	letter-spacing: 1px;
+}
+
+.card p{
+	text-align: center;
+	width: 100%;
+	margin:12px 0;
+	color: rgb(225,225,225,0.6);
+}
+
+.card:hover{
+	background-color:transparent;
+	transform:translateY(-8px);
+	border-color:#0D0221;
+}
+
+.card:hover i{
+	color:#0D0221;	
 }
 
 /* Show the data bar and the main slide on the same line */
@@ -78,13 +211,13 @@ main {
 	/* display: grid; */
 	/* grid-template-columns: repeat(3, 1fr); */
 	/* justify-items: left; */
-    background-color:#EEF0EB;
+	background-color:#ABC6AF;
 }
 
 
 #dataView {
 	justify-self: center;
-    padding:20px;
+	padding:20px;
 }
 
 #data {
@@ -113,46 +246,59 @@ main {
 
 /* About CSS */
 .background-container{
-    display: grid;
+	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	justify-items: left;
-    background-color:#4A6D65;
-    border-bottom-style: solid;
-    border-color: #2b5148;
-    padding: 70px 30px 20px;
+	background-color:#4A6D65;
+	border-bottom-style: solid;
+	border-color: #2b5148;
+	padding: 70px 30px 20px;
 }
 
 .about-container{
-    text-align: center;
+	background-image: url('/public/assets/defaultLandscape.png');
+	background-size: cover;
+}
+
+.about-background{
+	display: flex;
+	justify-content: center;
+}
+
+.about-text{
+	padding:70 30px 20px;
+	border-radius: 8px;
+	background-color: #EEF0EB;
+	opacity: 75%;
 }
 
 
 /* Our Team CSS */
 .team-container{
-    display: flex;
+	display: flex;
 	/* grid-template-columns: repeat(3, 1fr); */
 	justify-items: left;
-    background-color:#EEF0EB;
+	background-color:#EEF0EB;
 }
 
 div.gallery{
-    margin: 5px;
-    border: 1px solid #4A6D65;
-    float: left;
-    width: 180px;
+	margin: 5px;
+	border: 1px solid #4A6D65;
+	float: left;
+	width: 180px;
 }
 div.gallery:hover {
-  border: 1px solid #0D0221;
+	border: 1px solid #0D0221;
 }
 
 div.gallery img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 div.desc {
-  padding: 15px;
-  text-align: center;
+	padding: 15px;
+	text-align: center;
 }
 #searchCluster, #insertCluster {
 	display: flex;
@@ -187,7 +333,7 @@ footer {
 }
 .socialIcons a{
 	text-decoration: none;
-	padding: 10px; 
+	padding: 10px;
 	background-color: #ABC6AF;
 	margin: 10px;
 	border-radius: 50%;
@@ -221,7 +367,7 @@ footer {
 }
 
 .footerNav ul li a{
-	color:  #EEF0EB;
+	color: #EEF0EB;
 	margin: 20px;
 	text-decoration: none;
 	font-size: 1.3em;
