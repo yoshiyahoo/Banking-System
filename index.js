@@ -38,6 +38,9 @@ app.post("/api/updateAccount", (req, res) => {
 		.then((_data) => {
 			res.json("Account Updated!")
 		})
+		.catch((err) => {
+			res.status(400).json({ error: "Account Failed to Update!" + err})
+		})
 })
 
 app.post("/api/createAccount", (req, res) => {
@@ -46,7 +49,7 @@ app.post("/api/createAccount", (req, res) => {
 			res.json("Account Created!")
 		})
 		.catch((err) => {
-			res.json({"Account Failed to Create!": err})
+			res.status(400).json({ error: "Account Failed to Create!" + err})
 		})
 })
 
@@ -67,8 +70,11 @@ app.post("/api/getBank", (req, res) => {
 
 app.post("/api/updateBank", (req, res) => {
 	updateBank(req.body)
-		.then((_data) => {
+		.then(() => {
 			res.json("Bank Updated!")
+		})
+		.catch((err) => {
+			res.status(400).json({ error: "Bank Failed to Update!" + err})
 		})
 })
 
@@ -78,7 +84,7 @@ app.post("/api/createBank", (req, res) => {
 			res.json("Bank Created!")
 		})
 		.catch((err) => {
-			res.json({"Bank Failed to Create!": err})
+			res.status(400).json({ error: "Bank Failed to Create!" + err})
 		})
 })
 
@@ -103,6 +109,9 @@ app.post("/api/updateCustomer", (req, res) => {
 		.then((_data) => {
 			res.json("Customer Updated!")
 		})
+		.catch((err) => {
+			res.status(400).json({ error: "Customer Failed to Update!" + err})
+		})
 })
 
 app.post("/api/createCustomer", (req, res) => {
@@ -111,7 +120,7 @@ app.post("/api/createCustomer", (req, res) => {
 			res.json("Customer Created!")
 		})
 		.catch((err) => {
-			res.json({"Customer Failed to Create!": err})
+			res.status(400).json({ error: "Customer Failed to Create!" + err})
 		})
 })
 
@@ -135,6 +144,9 @@ app.post("/api/updateLoan", (req, res) => {
 		.then((_data) => {
 			res.json("Loan Updated!")
 		})
+		.catch((err) => {
+			res.status(400).json({ error: "Loan Failed to Create!" + err})
+		})
 })
 
 app.post("/api/createLoan", (req, res) => {
@@ -143,7 +155,7 @@ app.post("/api/createLoan", (req, res) => {
 			res.json("Loan Created!")
 		})
 		.catch((err) => {
-			res.json({"Loan Failed to Create!": err})
+			res.status(400).json({ error: "Loan Failed to Update!" + err})
 		})
 })
 
@@ -167,6 +179,9 @@ app.post("/api/updateTransaction", (req, res) => {
 		.then((_data) => {
 			res.json("Transaction Updated!")
 		})
+		.catch((err) => {
+			res.status(400).json({ error: "Transaction Failed to Update!" + err})
+		})
 })
 
 app.post("/api/createTransaction", (req, res) => {
@@ -175,7 +190,7 @@ app.post("/api/createTransaction", (req, res) => {
 			res.json("Transaction Created!")
 		})
 		.catch((err) => {
-			res.json({"Transaction Failed to Create!": err})
+			res.status(400).json({ error: "Transaction Failed to Create!" + err})
 		})
 })
 

@@ -24,10 +24,9 @@ function getData(databaseObject) {
 			displaySearchItems(data, "searchCluster")
 			displayInsertItems(databaseObject, "insertCluster")
 		})
-
 }
 
-/// These 5 functions are what the HTML can call
+/// These functions are what the HTML can call to get data
 function getBankData() {
 	getData(databaseObjects.BANK);
 }
@@ -51,6 +50,56 @@ function getLoanData() {
 
 // Initalize the window with this shit!!!
 window.onload = getBankData()
+
+// TODO: fix some bug in here
+function update() {
+	const rowsToUpdate = document.querySelectorAll(".modified");
+	const columnList = document.querySelectorAll("#data th");
+	// add the primary key as the final attribute later
+	const dataToSend = {
+		columns: [],
+		values: []
+	}
+	for (let i = 0; i < rowsToUpdate.length; i += 1) {
+		const data = rowsToUpdate[i].querySelectorAll("td");
+		for (let j = 0; j < data.length; j += 1) {
+			if (j === 0 && columnList[j].textContent.trimEnd().trimStart() !== "SSN") {
+				dataToSend[columnList[j].textContent.trimEnd().trimStart()] = data[j].textContent;
+			}
+			else {
+				console.log(data[j].textContent);
+				dataToSend.columns.push(columnList[j].textContent.trimEnd().trimStart());
+				dataToSend.values.push(data[j].textContent.trimEnd().trimStart());
+			}
+		}
+	}
+	fetch(`http://localhost:3000/api/update${lastData}`, {
+		method: "POST",
+		body: JSON.stringify(dataToSend),
+		headers: {
+			"content-type": "application/json"
+		}
+	})
+		.then((_res) => {
+			const modified = document.querySelectorAll(".modified")
+			for (let i = 0; i < modified.length; i += 1) {
+				modified[i].classList.remove("modified")
+			}
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+}
+
+function createMarkModifiedTupleEvent() {
+	// Listen for when a database entry is modified
+	const rows = document.querySelectorAll("#data tr")
+	for (let i = 0; i < rows.length; i += 1) {
+		rows[i].addEventListener("input", () => {
+			rows[i].classList.add("modified")
+		})
+	}
+}
 
 // Takes a table and places data inside the table
 function displayData(data, elementID) {
@@ -104,7 +153,13 @@ function displayData(data, elementID) {
 	}
 	innerHTML += `</tr>`
 
+	// add a button to the table
+	let updateButton = `<button id="updateButton" onclick="update()">Update</button>`
+	innerHTML += updateButton;
+	
 	dataDiv.innerHTML = innerHTML;
+	
+	createMarkModifiedTupleEvent()
 }
 
 
@@ -239,7 +294,7 @@ function displayInsertItems(databaseObject, elementID) {
 }
 
 function insert() {
-	const elems = document.getElementsByClassName("insert"); 
+	const elems = document.getElementsByClassName("insert");
 	if (elems == null) {
 		return
 	}

@@ -61,7 +61,7 @@ async function updateBank(fieldsToUpdate){
 	
 	const values = Object.values(fieldsToUpdate)
 
-	if(Object.values(fieldsToUpdate)[0].length === 0) {
+	if(values[0].length === 0) {
 		throw new Error('No new items to update.');
 	}
 	else if (values[0].length !== values[1].length) {
@@ -72,7 +72,7 @@ async function updateBank(fieldsToUpdate){
 	for(let i = 0; i < values[0].length; i += 1) {
 		setClause += `${values[0][i]} = "${values[1][i]} "`
 		if (i + 1 !== values[0].length) {
-			setClause += `,` 
+			setClause += `,`
 		}
 	} 
 	
