@@ -67,7 +67,6 @@ function update() {
 				dataToSend[columnList[j].textContent.trimEnd().trimStart()] = data[j].textContent;
 			}
 			else {
-				console.log(data[j].textContent);
 				dataToSend.columns.push(columnList[j].textContent.trimEnd().trimStart());
 				dataToSend.values.push(data[j].textContent.trimEnd().trimStart());
 			}
@@ -80,14 +79,18 @@ function update() {
 			"content-type": "application/json"
 		}
 	})
-		.then((_res) => {
+		.then((res) => {
 			const modified = document.querySelectorAll(".modified")
 			for (let i = 0; i < modified.length; i += 1) {
 				modified[i].classList.remove("modified")
 			}
+			return res.json()
 		})
 		.catch((err) => {
 			console.log(err)
+		})
+		.then((data) => {
+			console.log(data)
 		})
 }
 
@@ -138,25 +141,21 @@ function displayData(data, elementID) {
 		innerHTML += `</tr>`
 	}
 
-	// add a new input on the bottom
+	// add a new input on the bottom for insertion
 	innerHTML += `</tr>`
 	for (let i = 0; i < headers.length; i += 1) {
 		if (i == 0 && headers[i] != "SSN") {
 			innerHTML += `<td class="primaryKey">_</td>`
 		}
 		else if (headers[i] == "SSN") {
-			innerHTML += `<td contenteditable="plaintext-only">_</td>`
+			innerHTML += `<td contenteditable="plaintext-only" class="insert">_</td>`
 		}
 		else {
-			innerHTML += `<td contenteditable="plaintext-only"></td>`
+			innerHTML += `<td contenteditable="plaintext-only" class="insert"></td>`
 		}
 	}
 	innerHTML += `</tr>`
 
-	// add a button to the table
-	let updateButton = `<button id="updateButton" onclick="update()">Update</button>`
-	innerHTML += updateButton;
-	
 	dataDiv.innerHTML = innerHTML;
 	
 	createMarkModifiedTupleEvent()
@@ -295,16 +294,15 @@ function displayInsertItems(databaseObject, elementID) {
 
 function insert() {
 	const elems = document.getElementsByClassName("insert");
+	const columnList = document.querySelectorAll("#data th");
 	if (elems == null) {
 		return
 	}
 	let dataToSend = {}
 	for (let i = 0; i < elems.length; i += 1) {
-		// Go down the DOM and get the text from the label of the current item
-		const columnItem = elems[i].children[0].textContent;
-		// Go down again and grab the element written in the textbox
-		const valueToInsert = elems[i].children[1].value;
-		dataToSend[columnItem] = valueToInsert;
+		// Grab the text from the item
+		const valueToInsert = elems[i].textContent;
+		dataToSend[columnList[i].textContent.trim()] = valueToInsert.trim();
 	}
 
 	fetch(`http://localhost:3000/api/create${lastData}`, {

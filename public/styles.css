@@ -305,19 +305,19 @@ div.desc {
 	padding: 15px;
 	text-align: center;
 }
-#searchCluster, #insertCluster {
+#searchCluster {
 	display: flex;
 	flex-wrap: wrap;
 	text-align: left;
 	justify-content: safe center;
 }
 
-#searchButton, #insertButton {
+#searchButton, #insertButton, #updateButton {
 	display: block;
 	margin: auto;
 }
 
-.search, .insert {
+.search {
 	display: grid;
 	align-items: center;
 	text-align: center;
