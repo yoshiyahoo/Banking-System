@@ -10,6 +10,7 @@ class Database {
 		}
 
 		Database.instance = this;
+		console.log("swag", process.env.DB_NAME, process.env.DB_HOST)
 		// Set up the database connection for a one time connection
 		this.connection = mysql.createConnection({
 			host: process.env.DB_HOST, // Your database host

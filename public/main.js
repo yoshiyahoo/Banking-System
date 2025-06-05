@@ -163,10 +163,6 @@ function displayData(data, elementID) {
 }
 
 
-//<div id = "search">
-//	<label> Hi mom </label>
-//	<input></input>
-//</div>
 function displaySearchItems(data, elementID) {
 	const searchDiv = document.getElementById(elementID)
 	if (searchDiv == null) {
