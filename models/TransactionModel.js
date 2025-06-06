@@ -9,7 +9,7 @@ async function getTransactions(){
 }
 
 //get one transaction by ID
-async function getTransaction(Body){
+async function getTransaction(body){
 	const values = Object.values(body)
 	let whereClause = ``
 	for (let i = 0; i < values[0].length; i += 1) {
