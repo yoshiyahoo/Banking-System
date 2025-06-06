@@ -63,12 +63,13 @@ function update() {
 	for (let i = 0; i < rowsToUpdate.length; i += 1) {
 		const data = rowsToUpdate[i].querySelectorAll("td");
 		for (let j = 0; j < data.length; j += 1) {
-			if (j === 0 && columnList[j].textContent.trimEnd().trimStart() !== "SSN") {
-				dataToSend[columnList[j].textContent.trimEnd().trimStart()] = data[j].textContent;
+			if (j === 0 && columnList[j].textContent.trim() !== "SSN") {
+				dataToSend[columnList[j].textContent.trim()] = data[j].textContent;
 			}
 			else {
-				dataToSend.columns.push(columnList[j].textContent.trimEnd().trimStart());
-				dataToSend.values.push(data[j].textContent.trimEnd().trimStart());
+				console.log(data[j].textContent);
+				dataToSend.columns.push(columnList[j].textContent.trim());
+				dataToSend.values.push(data[j].textContent.trim());
 			}
 		}
 	}
@@ -162,10 +163,6 @@ function displayData(data, elementID) {
 }
 
 
-//<div id = "search">
-//	<label> Hi mom </label>
-//	<input></input>
-//</div>
 function displaySearchItems(data, elementID) {
 	const searchDiv = document.getElementById(elementID)
 	if (searchDiv == null) {
@@ -200,8 +197,8 @@ function search() {
 		const column = searchDivs[i].getElementsByTagName("label")
 		if (value[0].value !== "") {
 			hasData = true;
-			dataToSend.columns.push(column[0].innerText)
-			dataToSend.values.push(value[0].value)
+			dataToSend.columns.push(column[0].innerText.trim())
+			dataToSend.values.push(value[0].value.trim())
 		}
 	}
 	
