@@ -250,31 +250,48 @@ main {
 }
 
 /* About CSS */
-.background-container{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	justify-items: left;
-	background-color:#4A6D65;
-	border-bottom-style: solid;
-	border-color: #2b5148;
-	padding: 70px 30px 20px;
-}
-
 .about-container{
-	background-image: url('/public/assets/defaultLandscape.png');
-	background-size: cover;
+	width:80%;
+	margin:0 auto;
+	display:flex;
+	flex-wrap: wrap;
+	align-items: center;
+	text-align: center;
 }
-
-.about-background{
+.about-feature{
+	flex-basis: 50%;
+}
+.about-image{
+	flex-basis: 50%;
+	margin:auto;
+}
+.about-img img{
+	width:70%;
+	border-radius:8px;
+}
+.about-feature h1{
+	font-size: 2.5em;
+	color: #EEF0EB;
+	margin-bottom: 20px;
+	text-align: left;
+}
+.about-description{
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	text-align: left;
+	margin-bottom:40px;
 }
-
+.about-feature-icon .fa{
+	width:50px;
+	height:50px;
+	font-size:30px;
+	line-height:50px;
+	border-radius:8px;
+	border:1px solid #0D0221;
+}
 .about-text{
-	padding:70 30px 20px;
-	border-radius: 8px;
-	background-color: #EEF0EB;
-	opacity: 75%;
+	padding:0 20px;
+	text-align: initial;
 }
 
 
